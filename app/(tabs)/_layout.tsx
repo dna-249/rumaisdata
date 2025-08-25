@@ -28,10 +28,10 @@ export default function TabLayout() {
         }),
       }}>
     
-      <Tabs.Screen name='index' options={{tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />}}/>
-      <Tabs.Screen name='transaction' options={{tabBarIcon: ({ color }) => <AntDesign size={28} name="layout" color={color} />}}/>
-      <Tabs.Screen name='wallet' options={{tabBarIcon: ({ color }) => <Entypo size={28} name="wallet" color={color} />}}/>
-      <Tabs.Screen name='profile' options={{tabBarIcon: ({ color }) => <Feather size={28} name="user" color={color} />}}/>
+      <Tabs.Screen name='index' options={{title:"Home",tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />}}/>
+      <Tabs.Screen name='transaction' options={{title:"Transaction",tabBarIcon: ({ color }) => <AntDesign size={28} name="swap" color={color} />}}/>
+      <Tabs.Screen name='wallet' options={{title:"Wallet",tabBarIcon: ({ color }) => <Entypo size={28} name="wallet" color={color} />}}/>
+      <Tabs.Screen name='profile' options={{title:"Profile",tabBarIcon: ({ color }) => <Feather size={28} name="user" color={color} />}}/>
     
     </Tabs>
   );
