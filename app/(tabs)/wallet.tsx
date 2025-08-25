@@ -26,8 +26,9 @@ export default function wallet() {
 }
 const style = StyleSheet.create({
   div:{
-    paddingTop:120,
-    display:"flex",
+    flex:1,
+    paddingTop:20,
+    
     alignContent:"center",
     alignItems:"center",
    
