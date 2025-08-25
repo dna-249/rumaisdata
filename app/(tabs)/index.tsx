@@ -1,75 +1,148 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-
-export default function HomeScreen() {
+import { ThemedText } from '@/components/ThemedText'
+import React, { useState } from 'react'
+import { StyleSheet, View,FlatList, ScrollView } from 'react-native'
+import { Icon, PaperProvider, Text,useTheme,MD3Colors } from 'react-native-paper'
+import { AntDesign,Entypo, Feather, Ionicons } from '@expo/vector-icons'
+import { HelloWave } from '@/components/HelloWave'
+function home() {
+  const [toggle,setToggle]=useState(false)
+  const handleToggle =()=>{
+    setToggle(pre => !pre)
+  }
+    const theme = useTheme()
+    const data = ["Data","Airtime","Cable","Electricity",
+                  "Data Card","Bonus to Wallet","Airtime to Cash","Recharge Pin",
+                  "Edu Pin","Affiliate Website","My Referrals","More Service"
+                 ]
+    const data2 = ["3113271035","1% Charge","Account Names","(Cap at N50)","(RumaisData - Your)", "Opay"]
+    const data3 = [{item:"Account Names",id:"eye-slash", amt:"N0:00",star:"******"},{star:"******",item:"Referral Bonus",id:"eye-slash",amt:"N0:00"}]
+    const icons = ["earth","inbox","iconfontdesktop","bulb1","creditcard","wallet","export","sync","rocket1","team","gift","ellipsis1"]
+  
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
-  );
+    <>
+    <ScrollView>
+      <View style={{backgroundColor:theme.colors.background}}>
+        
+              <View style={[style.cont2,{ justifyContent:"space-between",flexDirection:"row",padding:20}] }> 
+              <ThemedText type='subtitle'>Welcome Back!<HelloWave/></ThemedText>
+              <Text> <Ionicons name='notifications' size={24}/></Text>
+                </View>
+                        
+
+
+
+
+      <View><ThemedText style={{alignSelf:"center",margin:10,fontWeight:"bold"}} >USER PACKAGE: SMART EARNER</ThemedText></View>
+     <View style={[style.cont3,{backgroundColor:theme.colors.primary}]}>
+       <FlatList data={data3} numColumns={2} renderItem={({item})=>{return(
+       <ThemedText  style={style.cont2A}>{item.item}</ThemedText >
+        )}}/> 
+        <FlatList data={data3} numColumns={2} renderItem={({item})=>{return(
+       <ThemedText  style={[style.cont2A,{ justifyContent:"space-between"}] }>{toggle? item.amt:item.star} <Feather style={{position:"relative",left:30}} size={20} onPress={handleToggle} name={[`${toggle? "eye":"eye-off"}`]}/></ThemedText >
+        
+        )}}/> 
+         <Text style={style.box}><AntDesign  name="plussquare"/> Fund Wallet</Text>    
+     </View>
+
+     <View style={[style.cont4,{backgroundColor:theme.colors.primary}]}>
+       <FlatList data={data2} numColumns={2} renderItem={({item})=>{return(
+        <ThemedText  style={style.cont2A}>{item}</ThemedText >
+        )}}/> 
+         
+     </View>
+
+      <View >
+       <FlatList data={data}  numColumns={4} style={style.cont}
+                renderItem={({item,index})=>{return(
+                <View style={style.div}>
+                  <View style={style.item}>
+                <AntDesign  name={`${icons[index]}`} color={"white"} size={20}/></View>
+                <ThemedText style={style.iconText}>{item}</ThemedText> 
+                </View>
+              )}} />
+      </View>
+      </View>
+     </ScrollView>
+</>  )
 }
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
+export default home
+const style = StyleSheet.create({
+     item:{
+      backgroundColor:"coral",
+      width:30,
+      padding:5,
+      borderRadius:10
+     
+     },
+
+    div:{
+      width:320,
+      alignContent:'center',
+      justifyContent:'space-between',
+      flex:1,
+       },
+
+    iconText:{
+      fontSize:12,
+      fontWeight:"bold",
+    },
+    cont:{
+      width:320,
+      height:250,
+      margin:"auto",
+      padding:5,
+      
+      
+    },
+    cont2:{
+      width:320,
+      height:80,
+      alignSelf:"center",
+      padding:5,
+      backgroundColor:'rgb(242, 219, 242)',
+      borderRadius:20,
+      color:"white",
+      alignContent:"center"
+    },
+     cont2A:{
+      justifyContent:"space-between",
+      alignContent:"center",
+      width:200,
+      height:25,
+      color:"white",
+      fontWeight:"bold",
+      padding:10,
+      alignItems:"center"
+    },
+     cont3:{
+      width:320,
+      height:150,
+      alignSelf:"center",
+      marginBottom:30,
+      padding:5,
+      backgroundColor:"blue",
+      borderRadius:12,
+    },
+    cont4:{
+      width:320,
+      height:120,
+      alignSelf:"center",
+      marginBottom:30,
+      padding:5,
+      backgroundColor:"blue",
+      borderRadius:12,
+    },
+    box:{
+      height:30, 
+      width:200, 
+      backgroundColor:"white",
+      borderRadius:5,
+      marginBottom:10,
+      alignSelf:"center",
+      textAlign:"center",
+      alignContent:"center",
+      fontWeight:"bold"
+    }
+    
+  })
