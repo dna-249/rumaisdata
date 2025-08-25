@@ -17,7 +17,7 @@ export default function wallet() {
     <KeyboardAvoidingView>
       <ScrollView>
        <View style={style.div}>
-                <ThemedText type='title'>Wallet History</ThemedText>
+                <ThemedText type='subtitle'>Wallet History</ThemedText>
                 <TextInput onChangeText={setEmail} style={style.p} placeholder='search...' mode='outlined' label={"search history"} />
        </View>
        </ScrollView>

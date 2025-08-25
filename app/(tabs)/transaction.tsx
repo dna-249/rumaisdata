@@ -25,7 +25,7 @@ const transaction = () => {
   
         <KeyboardAvoidingView>
                 <View style={{backgroundColor:theme.colors.background}}>
-                  <ThemedText type="subtitle" style={{marginBottom:20}}>Transactions</ThemedText>
+                  <ThemedText type="subtitle">Transactions</ThemedText>
                     <View  style={style.flex}>
 
                           <View  style={{justifyContent:"flex-start",width:20}}><AntDesign name='caretdown' size={14}  onPress={handleToggle}/></View>
