@@ -1,9 +1,10 @@
-import { ThemedText } from '@/components/ThemedText'
-import React, { useState } from 'react'
-import { StyleSheet, View,FlatList, ScrollView } from 'react-native'
-import { Icon, PaperProvider, Text,useTheme,MD3Colors } from 'react-native-paper'
-import { AntDesign,Entypo, Feather, Ionicons } from '@expo/vector-icons'
 import { HelloWave } from '@/components/HelloWave'
+import { ThemedText } from '@/components/ThemedText'
+import { AntDesign, Feather, Ionicons } from '@expo/vector-icons'
+import { Link } from 'expo-router'
+import React, { useState } from 'react'
+import { FlatList, ScrollView, StyleSheet, View } from 'react-native'
+import { Text, useTheme } from 'react-native-paper'
 function home() {
   const [toggle,setToggle]=useState(false)
   const handleToggle =()=>{
@@ -24,7 +25,7 @@ function home() {
       <View style={{backgroundColor:theme.colors.background}}>
         
               <View style={[style.cont2,{ justifyContent:"space-between",flexDirection:"row",padding:20}] }> 
-              <ThemedText type='subtitle'>Welcome Back!<HelloWave/></ThemedText>
+              <ThemedText type='subtitle'><Link href="/signup">Welcome Back!</Link><HelloWave/></ThemedText>
               <Text> <Ionicons name='notifications' size={24}/></Text>
                 </View>
                         
