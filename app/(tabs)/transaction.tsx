@@ -1,4 +1,3 @@
-import { ThemedText } from '@/components/ThemedText'
 import { AntDesign } from '@expo/vector-icons'
 import React, { useState } from 'react'
 import { KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from 'react-native'
@@ -11,10 +10,10 @@ const transaction = () => {
     const theme = useTheme()
     const data = ["Data","Airtime","Electricity","Cable","Education Pin","Bulk SMS","Recharge Card","Airtime Swap"]
     const handleToggle =()=>{
-        if(show === -300){
+        if(show === -200){
         setShow( -600)
         }else{
-        setShow(-300)}
+        setShow(-200)}
     }
      const handleSelect =(item:string)=>{
         setSelect(()=>item)
@@ -25,7 +24,6 @@ const transaction = () => {
   
         <KeyboardAvoidingView>
                 <View style={{backgroundColor:theme.colors.background}}>
-                  <ThemedText type="subtitle">Transactions</ThemedText>
                     <View  style={style.flex}>
 
                           <View  style={{justifyContent:"flex-start",width:20}}><AntDesign name='caretdown' size={14}  onPress={handleToggle}/></View>
