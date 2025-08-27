@@ -108,19 +108,7 @@ export default function profile() {
 
 
 
-           <View style={style.flex}>
-                    <View style={style.circle}><AntDesign name='phone' color={"grey"} size={24}/></View>
-                    <View style={style.div2}>
-                          <Text style={style.head}>Log Complaint</Text>
-                          <Text style={style.p}>log Your any complaint to our support</Text>  
-                    </View>
-                    <View style={style.div}>
-                                  <View style={{alignSelf:"flex-end"}}>
-                                  <AntDesign name="right" color={"coral"} size={20}/>
-                            </View>
-                    </View>
-          </View>
-
+          
 
           <View style={style.flex}>
                     <View style={style.circle}><FontAwesome name='tasks' color={"grey"} size={24}/></View>
@@ -262,20 +250,7 @@ export default function profile() {
                 </View>
 
 
-                 <View style={style.flex}>
-                          <View style={style.circle}><AntDesign name='address' color={"grey"} size={24}/></View>
-                          <View style={style.div2}>
-                                <Text style={style.head}>Log Out</Text>
-                                <Text style={style.p}>sign out of your account</Text>  
-                          </View>
-                          <View style={style.div}>
-                                        <View style={{alignSelf:"flex-end"}}>
-                                        <AntDesign name="right" color={"coral"} size={15}/>
-                                  </View>
-                          </View>
-                </View>
-
-
+            
 
 
         </View>
