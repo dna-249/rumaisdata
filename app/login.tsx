@@ -29,13 +29,8 @@ export default function Login() {
       <TextInput onChangeText={setEmail} style={style.p} placeholder='username...' mode='outlined' label={"username"} />
       <TextInput onChangeText={setPassword} style={style.p} placeholder='password...' mode='outlined' label={"password"} />
                 {error && <Text style={{color:theme.colors.error}}>{error}</Text>}
-<<<<<<< HEAD
-      <Button style={style.p} mode='contained' onPress={handleAunthentication}>{toggle? "Siqn Up":"Sign In"}</Button>:
-     <Button  mode='text' onPress={handleToggle}>Don't you already have an account?Click<Link href={"/signup"} style={{color:"blue"}}> here to sign Up</Link> </Button>
-=======
       <Button style={style.p} mode='contained' onPress={handleAunthentication}>{"Sign In"}</Button>
      <Button  mode='text' onPress={handleToggle}>Don't you already have an account?Click<Link href="/signup"> here to signup</Link> </Button>
->>>>>>> 7f998d0451a84e67fbede53cba94c6e6a272c2ac
     </View>
     </KeyboardAvoidingView>
   </>)
