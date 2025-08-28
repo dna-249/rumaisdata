@@ -26,7 +26,7 @@ function home() {
       <View style={{backgroundColor:theme.colors.background}}>
         
               <View style={[style.cont2,{ justifyContent:"space-between",flexDirection:"row",padding:20}] }> 
-              <ThemedText type='subtitle'><Link href="/signup">Welcome Back!</Link><HelloWave/></ThemedText>
+              <ThemedText type='subtitle'><Link href="/login">Welcome Back!</Link><HelloWave/></ThemedText>
               <Text> <Ionicons name='notifications' size={24}/></Text>
                 </View>
                         

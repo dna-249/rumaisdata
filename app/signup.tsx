@@ -32,13 +32,13 @@ export default function Signup() {
     <KeyboardAvoidingView>
     <View style={style.div}>
       <ThemedText type='title'>Create Account</ThemedText>
-      <TextInput onChangeText={setEmail} style={style.p} placeholder='Fullname' mode='outlined' label={"Fullname"} />
-      <TextInput onChangeText={setAddress} style={style.p} placeholder='Address' mode='outlined' label={"Address"} />
-      <TextInput onChangeText={setPhone} style={style.p} placeholder='Phone' mode='outlined' label={"Phone"} />
-      <TextInput onChangeText={setUser} style={style.p} placeholder='Username' mode='outlined' label={"Username"} />
-      <TextInput onChangeText={setPassword} style={style.p} placeholder='password' mode='outlined' label={"password"} />
-      <TextInput onChangeText={setConfirm} style={style.p} placeholder='Comfirm' mode='outlined' label={"Comfirm"} />
-      <TextInput onChangeText={setPin} style={style.p} placeholder='Set Pin' mode='outlined' label={"Set Pin"} />
+      <TextInput onChangeText={setEmail} style={style.p} placeholder='fullname...' mode='outlined' label={"Fullname"} />
+      <TextInput onChangeText={setAddress} style={style.p} placeholder='address...' mode='outlined' label={"Address"} />
+      <TextInput onChangeText={setPhone} style={style.p} placeholder='Phone...' mode='outlined' label={"Phone"} />
+      <TextInput onChangeText={setUser} style={style.p} placeholder='username...' mode='outlined' label={"Username"} />
+      <TextInput onChangeText={setPassword} style={style.p} placeholder='password...' mode='outlined' label={"password"} />
+      <TextInput onChangeText={setConfirm} style={style.p} placeholder='comfirm...' mode='outlined' label={"Comfirm"} />
+      <TextInput onChangeText={setPin} style={style.p} placeholder='pin...' mode='outlined' label={"Set Pin"} />
                   {error && <Text style={{color:theme.colors.error}}>{error}</Text>}
       <Button style={style.p} mode='contained' onPress={handleAunthentication}><Link href={"/"} style={{color:"blue"}}>Signup</Link></Button>:
       </View>
@@ -56,7 +56,7 @@ const style = StyleSheet.create({
   },
   p:{
     width:300,
-    margin:10
+    margin:10,
   }
   
 })

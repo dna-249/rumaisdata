@@ -5,15 +5,15 @@ import { FlatList } from 'react-native-gesture-handler'
 import { useTheme } from 'react-native-paper'
 const transaction = () => {
     const [toggle,setToggle] = useState(false)
-    const [show,setShow] = useState(-600)
+    const [show,setShow] = useState(-1600)
     const [select,setSelect] = useState<String>("Data")
     const theme = useTheme()
     const data = ["Data","Airtime","Electricity","Cable","Education Pin","Bulk SMS","Recharge Card","Airtime Swap"]
     const handleToggle =()=>{
-        if(show === -200){
-        setShow( -600)
+        if(show === -300){
+        setShow( -1600)
         }else{
-        setShow(-200)}
+        setShow(-300)}
     }
      const handleSelect =(item:string)=>{
         setSelect(()=>item)
@@ -63,6 +63,10 @@ const style = StyleSheet.create({
     padding:10,
     borderTopRightRadius:"10px",
     borderTopLeftRadius:"10px",
-    fontSize:24
+    fontSize:24,
+    shadowOpacity:0.02,
+    shadowOffset:{width:2,height:-5},
+    shadowColor:"black",
+    transitionDuration:"0.01"
    }
 })
