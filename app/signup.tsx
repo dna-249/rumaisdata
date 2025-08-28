@@ -1,10 +1,11 @@
 import { ThemedText } from '@/components/ThemedText'
+import { Link } from 'expo-router'
 import React, { useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { Button, Text, TextInput, useTheme } from "react-native-paper"
 
-export default function signup() {
+export default function Signup() {
   const [toggle,setToggle] = useState(false)
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
@@ -39,7 +40,7 @@ export default function signup() {
       <TextInput onChangeText={setConfirm} style={style.p} placeholder='comfirm...' mode='outlined' label={"Comfirm"} />
       <TextInput onChangeText={setPin} style={style.p} placeholder='pin...' mode='outlined' label={"Set Pin"} />
                   {error && <Text style={{color:theme.colors.error}}>{error}</Text>}
-      <Button style={style.p} mode='contained' onPress={handleAunthentication}>Sign Up</Button>:
+      <Button style={style.p} mode='contained' onPress={handleAunthentication}><Link href={"/"} style={{color:"blue"}}>Signup</Link></Button>:
       </View>
     </KeyboardAvoidingView>
     </ScrollView>

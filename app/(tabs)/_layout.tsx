@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
+import React, { useState } from 'react';
 import { Platform } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
@@ -8,11 +8,16 @@ import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { AntDesign, Entypo, Feather } from '@expo/vector-icons';
+import Login from '../login';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const [on,setOn] = useState<boolean>(false)
+
 
   return (
+    <>
+    {on == true? <Login />:
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
@@ -33,6 +38,7 @@ export default function TabLayout() {
       <Tabs.Screen name='wallet' options={{title:"Wallet",tabBarIcon: ({ color }) => <Entypo size={28} name="wallet" color={color} />}}/>
       <Tabs.Screen name='profile' options={{title:"Profile",tabBarIcon: ({ color }) => <Feather size={28} name="user" color={color} />}}/>
     
-    </Tabs>
+    </Tabs>}
+    </>
   );
 }

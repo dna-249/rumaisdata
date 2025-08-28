@@ -22,6 +22,7 @@ function home() {
   return (
     <>
     <ScrollView>
+     
       <View style={{backgroundColor:theme.colors.background}}>
         
               <View style={[style.cont2,{ justifyContent:"space-between",flexDirection:"row",padding:20}] }> 
