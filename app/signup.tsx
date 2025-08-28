@@ -31,20 +31,22 @@ export default function Signup() {
        pin:"set your transaction pin"
   }
   const handleAunthentication =async()=>{
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const validEmail = emailRegex.test(email)
    if(name === "") setError(errors.name)
-   else if(email === "") setError(errors.email)
+   else if(email === "" || !validEmail) setError(errors.email)
    else if(address === "") setError(errors.address)
-   else if(phone === "") setError(errors.phone)
+   else if(phone === "" || phone.length === 11) setError(errors.phone)
    else if(user === "") setError(errors.user)
-   else if(password === "") setError(errors.password)
-   else if(confirm === "") setError(errors.confirm)
-   else if(pin === "") setError(errors.pin)
+   else if(password === "" || password.length < 7) setError(errors.password)
+   else if(confirm !== password) setError(errors.confirm)
+   else if(pin.length == 5) setError(errors.pin)
    else return setError("")
   }
   return (
     <>
     <ScrollView>
-    <KeyboardAvoidingView>
+    <KeyboardAvoidingView  enabled={true} behavior='padding'>
     <View style={style.div}>
       <ThemedText type='subtitle'>Create Account</ThemedText>
       <View  style={{ width:300}}><Text style ={{alignSelf:"center",  padding:12, color:'coral'}}>Fill the following:</Text></View>
@@ -59,7 +61,7 @@ export default function Signup() {
       <TextInput onChangeText={setAddress} style={style.p} placeholder='address...' mode='outlined' label={"Address"} />
       {error === errors.address && <Text style={{color:theme.colors.error}}>{errors.address}</Text>}
 
-      <TextInput onChangeText={setPhone} style={style.p} placeholder='Phone...' mode='outlined' label={"Phone"} />
+      <TextInput onChangeText={setPhone}  keyboardType='numeric' style={style.p} placeholder='Phone...' mode='outlined' label={"Phone"} />
       {error === errors.phone && <Text style={{color:theme.colors.error}}>{errors.phone}</Text>}
 
       <TextInput onChangeText={setUser} style={style.p} placeholder='username...' mode='outlined' label={"Username"} />
@@ -71,7 +73,7 @@ export default function Signup() {
       <TextInput onChangeText={setConfirm} style={style.p} placeholder='comfirm...' mode='outlined' label={"Comfirm"} />
       {error === errors.confirm && <Text style={{color:theme.colors.error}}>{errors.confirm}</Text>}
 
-      <TextInput onChangeText={setPin} style={style.p} placeholder='pin...' mode='outlined' label={"Set Pin"} />
+      <TextInput onChangeText={setPin}  keyboardType='numeric' style={style.p} placeholder='pin...' mode='outlined' label={"Set Pin"} />
       {error === errors.pin && <Text style={{color:theme.colors.error}}>{errors.pin}</Text>}
 
                 
