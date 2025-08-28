@@ -25,12 +25,16 @@ export default function Login() {
     <>
     <KeyboardAvoidingView>
     <View style={style.div}>
-      <ThemedText type='title'>{"Welcome Back"}<HelloWave/></ThemedText>
+      <ThemedText type='subtitle'>{"Welcome Back"}<HelloWave/></ThemedText>
+      <View  style={{ width:300}}><Text style ={{alignSelf:"center", color:'coral',padding:10}}>Sign in to your Account</Text></View>
+   
       <TextInput onChangeText={setEmail} style={style.p} placeholder='username...' mode='outlined' label={"username"} />
       <TextInput onChangeText={setPassword} style={style.p} placeholder='password...' mode='outlined' label={"password"} />
                 {error && <Text style={{color:theme.colors.error}}>{error}</Text>}
+       <View  style={{ width:300}}><Text style ={{alignSelf:"flex-end", color:'blue'}}>forget password</Text></View>
+   
       <Button style={style.p} mode='contained' onPress={handleAunthentication}>{"Sign In"}</Button>
-     <Button  mode='text' onPress={handleToggle}>Don't you already have an account?Click<Link href="/signup"> here to signup</Link> </Button>
+        <Button  mode='text' onPress={handleToggle}> <Text style={{fontSize:11}}> Don't you already have an account?  Click<Link style={{color:"blue",textDecorationColor:"underlined"}} href="/signup"> here to signup</Link> </Text></Button>
     </View>
     </KeyboardAvoidingView>
   </>)
