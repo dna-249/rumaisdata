@@ -39,7 +39,7 @@ export default function signup() {
       <TextInput onChangeText={setConfirm} style={style.p} placeholder='comfirm...' mode='outlined' label={"Comfirm"} />
       <TextInput onChangeText={setPin} style={style.p} placeholder='pin...' mode='outlined' label={"Set Pin"} />
                   {error && <Text style={{color:theme.colors.error}}>{error}</Text>}
-      <Button style={style.p} mode='contained' onPress={handleAunthentication}>Siqn Up</Button>:
+      <Button style={style.p} mode='contained' onPress={handleAunthentication}>Sign Up</Button>:
       </View>
     </KeyboardAvoidingView>
     </ScrollView>
