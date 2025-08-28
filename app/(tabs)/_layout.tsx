@@ -12,12 +12,12 @@ import Login from '../login';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-  const [on,setOn] = useState<boolean>(false)
+  const [on,setOn] = useState<boolean>(true)
 
 
   return (
     <>
-    {on == true? <Login />:
+    {on === true? <Login />:
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
