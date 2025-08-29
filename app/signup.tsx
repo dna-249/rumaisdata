@@ -1,5 +1,5 @@
 import { ThemedText } from '@/components/ThemedText'
-import axios from 'axios'
+import axios from "axios"
 import React, { useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
@@ -42,18 +42,21 @@ export default function Signup() {
    else if(password === "" || password.length < 7) setError(errors.password)
    else if(confirm !== password) setError(errors.confirm)
    else if(pin.length == 5) setError(errors.pin)
-   else return setError("")
+   else {
+         setError("")
+         handleRequest()
+       } 
   }
    
   const handleRequest =async()=>{
-    await axios.post("dnadata.vercel.app/user",{
+    await axios.post("https://dnadata.vercel.app/user",{
       name:name,
       address:address,
       phone:phone,
       email:email,
       password:password,
       pin:pin,
-    })
+    }).then(res => console.log(res.data))
   }
   return (
     <>
