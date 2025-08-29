@@ -54,9 +54,10 @@ export default function Signup() {
       address:address,
       phone:phone,
       email:email,
+      user:user,
       password:password,
       pin:pin,
-    }).then(res => console.log(res.data))
+    }).then(res =>alert(res.data))
   }
   return (
     <>
