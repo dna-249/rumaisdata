@@ -1,16 +1,19 @@
 import { HelloWave } from '@/components/HelloWave'
 import { ThemedText } from '@/components/ThemedText'
-import { Link } from 'expo-router'
-import React, { useState } from 'react'
+import axios from 'axios'
+import { Link, useNavigation } from 'expo-router'
+import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import { Button, Text, TextInput, useTheme } from "react-native-paper"
 
 export default function Login() {
   const [toggle,setToggle] = useState(false)
   const [email,setEmail] = useState("")
+  const [user,setUser] = useState("")
   const [password,setPassword] = useState("")
   const [error,setError] = useState('')
   const theme = useTheme()
+
 
   const handleToggle =()=>{
     setToggle(pre =>!pre)
@@ -19,8 +22,25 @@ export default function Login() {
   const handleAunthentication =async()=>{
     if(!email || !password){
       setError("please fill the all fields")
-    } else return;
+    } else {
+      setError("")
+      handleRequest()
+    }
   }
+
+   const handleRequest =async()=>{
+    await axios.post("https://dnadata.vercel.app/user",{
+      user:email,
+      password:password,
+    }).then(res =>{alert(res.data);setUser(()=>res.data._id)})
+  }
+
+  useEffect(() => {
+     axios.get(`https://dnadata.vercel.app/user/${user}`).then(res =>{alert(res.data); useNavigation("/login")})
+ 
+    
+  }, [user])
+  
   return (
     <>
     <KeyboardAvoidingView>
