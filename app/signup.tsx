@@ -1,5 +1,6 @@
 import { ThemedText } from '@/components/ThemedText'
 import axios from "axios"
+import { useRouter } from 'expo-router'
 import React, { useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
@@ -17,6 +18,7 @@ export default function Signup() {
   const [error,setError] = useState('')
   const [user,setUser] = useState('')
   const theme = useTheme()
+  const nav = useRouter()
 
   const handleToggle =()=>{
     setToggle(pre =>!pre)
@@ -37,9 +39,9 @@ export default function Signup() {
    if(name === "") setError(errors.name)
    else if(email === "" || !validEmail) setError(errors.email)
    else if(address === "") setError(errors.address)
-   else if(phone === "" || phone.length === 11) setError(errors.phone)
+   else if(phone === "" || phone.length === 10) setError(errors.phone)
    else if(user === "") setError(errors.user)
-   else if(password === "" || password.length < 7) setError(errors.password)
+   else if(password === "" || password.length < 5) setError(errors.password)
    else if(confirm !== password) setError(errors.confirm)
    else if(pin.length == 5) setError(errors.pin)
    else {
@@ -57,7 +59,7 @@ export default function Signup() {
       user:user,
       password:password,
       pin:pin,
-    }).then(res =>alert(res.data))
+    }).then(res =>{alert(res.data); nav.navigate("/login")})
   }
   return (
     <>
@@ -93,7 +95,7 @@ export default function Signup() {
       {error === errors.pin && <Text style={{color:theme.colors.error}}>{errors.pin}</Text>}
 
                 
-      <Button style={style.p} mode='contained' onPress={handleAunthentication}>Register</Button>:
+      <Button style={style.p} mode='contained' onPress={handleAunthentication}>Register</Button>
       </View>
     </KeyboardAvoidingView>
     </ScrollView>
