@@ -8,8 +8,9 @@ import { Button, Text, TextInput, useTheme } from "react-native-paper"
 
 export default function Login() {
   const [toggle,setToggle] = useState(false)
-  const [email,setEmail] = useState("")
+  const [token,setToken] = useState("")
   const [user,setUser] = useState("")
+  const [name,setName] = useState("")
   const [password,setPassword] = useState("")
   const [error,setError] = useState('')
   const theme = useTheme()
@@ -20,26 +21,40 @@ export default function Login() {
   }
 
   const handleAunthentication =async()=>{
-    if(!email || !password){
+    if(!user || !password){
       setError("please fill the all fields")
     } else {
       setError("")
-      handleRequest()
+      handleLogin()
     }
   }
 
-   const handleRequest =async()=>{
-    await axios.post("https://dnadata.vercel.app/user",{
-      user:email,
-      password:password,
-    }).then(res =>{alert(res.data);setUser(()=>res.data._id)})
+  const handleLogin = async () => {
+   
+    await axios.post(`https://dnadata.vercel.app/user/login`,{
+        name:user,
+        password:password
+      }).then(res => {setToken(res.data)})
+      .catch(err => {if(typeof user !== "undefined"){alert(user + "" + "access denied")} else console.log(err)})
+   
   }
+  useEffect(() => {
+  if(typeof user !== "undefined" && user !== "") {handleLogin();}
+  }, [user])
 
   useEffect(() => {
-     axios.get(`https://dnadata.vercel.app/user/${user}`).then(res =>{alert(res.data); useNavigation("/login")})
- 
-    
-  }, [user])
+    if(typeof token !== "undefined") {handleVerify();}
+  }, [token])
+
+  const handleVerify = async() => {
+    await axios.post(`https://dnadata.vercel.app/user/verify`,{
+      name:user,
+      password:password,
+      header:token
+    }).then(res =>{useNavigation(`/${res.data._id}`); setName(res.data); console.log(res.data); alert(user +""+ "is verified successfully")}).catch(err => {alert("invalid username or password");console.log(err)})
+
+
+  }
   
   return (
     <>
@@ -48,7 +63,7 @@ export default function Login() {
       <ThemedText type='subtitle'>{"Welcome Back"}<HelloWave/></ThemedText>
       <View  style={{ width:300}}><Text style ={{alignSelf:"center", color:'coral',padding:10}}>Sign in to your Account</Text></View>
    
-      <TextInput onChangeText={setEmail} style={style.p} placeholder='username...' mode='outlined' label={"username"} />
+      <TextInput onChangeText={setUser} style={style.p} placeholder='username...' mode='outlined' label={"username"} />
       <TextInput onChangeText={setPassword} style={style.p} placeholder='password...' mode='outlined' label={"password"} />
                 {error && <Text style={{color:theme.colors.error}}>{error}</Text>}
        <View  style={{ width:300}}><Text style ={{alignSelf:"flex-end", color:'blue'}}>forget password</Text></View>
