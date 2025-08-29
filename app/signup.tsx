@@ -96,7 +96,7 @@ export default function Signup() {
 
                 
       <Button style={style.p} mode='contained' onPress={handleAunthentication}>Register</Button>
-      <Button  mode='text' onPress={handleToggle}> <Text style={{fontSize:11}}> You already have an account?  Click<Link style={{color:"blue",textDecorationColor:"underlined"}} href="/signup"> here to sign in</Link> </Text></Button>
+      <Button  mode='text' onPress={handleToggle}> <Text style={{fontSize:11}}> You already have an account?  Click<Link style={{color:"blue",textDecorationColor:"underlined"}} href="/"> here to sign in</Link> </Text></Button>
          
       </View>
     </KeyboardAvoidingView>
