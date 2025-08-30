@@ -41,17 +41,12 @@ export default function Login() {
       user:user,
       password:password,
       header:token
-    }).then(res =>{handleTo(res.data._id); console.log(res.data); alert(user +""+ "is verified successfully")})
+    }).then(res =>{ nav.push({pathname: '/home',params: {id: res.data._id } }); console.log(res.data); alert(user +""+ "is verified successfully")})
     .catch(err => {alert("invalid username or password");console.log(err)})
 
  
   }
-  const handleTo =(id:any)=>{ 
-    nav.push({
-      pathname: '/home',
-      params: {id: id },
-    });
-  };
+  
   
   return (
     <>
