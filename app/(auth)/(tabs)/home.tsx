@@ -2,19 +2,19 @@ import { HelloWave } from '@/components/HelloWave'
 import { ThemedText } from '@/components/ThemedText'
 import { AntDesign, Feather, Ionicons } from '@expo/vector-icons'
 import axios from 'axios'
-import { Link } from 'expo-router'
+import { useLocalSearchParams } from 'expo-router'
 import React, { useEffect, useState } from 'react'
 import { FlatList, ScrollView, StyleSheet, View } from 'react-native'
 import { Text, useTheme } from 'react-native-paper'
 
-function Home({route}) {
+
+function Home() {
   const [toggle,setToggle]=useState(false)
-  const [name,setName]=useState<String>('')
-  const {id} =route.params
-  const handleToggle =()=>{
-    setToggle(pre => !pre)
-  }
-    const theme = useTheme()
+  const [name,setName]=useState<any>('')
+  const { id} = useLocalSearchParams()
+   const theme = useTheme()
+
+
     const data = ["Data","Airtime","Cable","Electricity",
                   "Data Card","Bonus to Wallet","Airtime to Cash","Recharge Pin",
                   "Edu Pin","Affiliate Website","My Referrals","More Service"
@@ -22,10 +22,10 @@ function Home({route}) {
     const data2 = ["3113271035","1% Charge","Account Names","(Cap at N50)","(RumaisData - Your)", "Opay"]
     const data3 = [{item:"Account Names",id:"eye-slash", amt:"N0:00",star:"******"},{star:"******",item:"Referral Bonus",id:"eye-slash",amt:"N0:00"}]
     const icons = ["earth","inbox","iconfontdesktop","bulb1","creditcard","wallet","export","sync","rocket1","team","gift","ellipsis1"]
-   const [on,setOn] = useState<boolean>(false)
-   useEffect(() => {
+  
+    useEffect(() => {
          axios.get(`https://dnadata.vercel.app/user/one/${id}`)
-                 .then(res =>setName(res.data)).catch(err => console.log(err))
+                 .then(res =>{setName(()=>res.data)}).catch(err => console.log(err))
      }, [id])
    
   
@@ -37,7 +37,7 @@ function Home({route}) {
       <View style={{backgroundColor:theme.colors.background}}>
         
               <View style={[style.cont2,{ justifyContent:"space-between",flexDirection:"row",padding:20}] }> 
-              <ThemedText type='subtitle'><Link href="/login">Welcome Back!</Link><HelloWave/><br/><Text>{name?.user}</Text></ThemedText>
+              <ThemedText type='subtitle'>Welcome Back!<HelloWave/><br/><Text>{name?.user}</Text></ThemedText>
               <Text> <Ionicons name='notifications' size={24}/></Text>
                 </View>
                         

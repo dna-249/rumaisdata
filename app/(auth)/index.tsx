@@ -16,13 +16,6 @@ export default function Login() {
   const theme = useTheme()
   const nav = useRouter()
   const navigation = useNavigation()
-   
-  
-
-
-  const handleToggle =()=>{ 
-    localStorage.setItem("session",JSON.stringify(user))
-  }
 
   const handleAunthentication =async()=>{
     if(!user || !password){
@@ -48,10 +41,17 @@ export default function Login() {
       user:user,
       password:password,
       header:token
-    }).then(res =>{navigation.navigate("home",{id:res.data_id}); console.log(res.data); alert(user +""+ "is verified successfully")}).catch(err => {alert("invalid username or password");console.log(err)})
+    }).then(res =>{handleTo(res.data._id); console.log(res.data); alert(user +""+ "is verified successfully")})
+    .catch(err => {alert("invalid username or password");console.log(err)})
 
  
   }
+  const handleTo =(id:any)=>{ 
+    nav.push({
+      pathname: '/home',
+      params: {id: id },
+    });
+  };
   
   return (
     <>
@@ -66,7 +66,7 @@ export default function Login() {
        <View  style={{ width:300}}><Text style ={{alignSelf:"flex-end", color:'blue'}}>forget password</Text></View>
    
       <Button style={style.p} mode='contained' onPress={handleAunthentication}>{"Sign In"}</Button>
-        <Button  mode='text' onPress={handleToggle}> <Text style={{fontSize:11}}> Don't you already have an account?  Click<Link style={{color:"blue",textDecorationColor:"underlined"}} href="/signup"> here to signup</Link> </Text></Button>
+        <Button  mode='text' > <Text style={{fontSize:11}}> Don't you already have an account?  Click<Link style={{color:"blue",textDecorationColor:"underlined"}} href="/signup"> here to signup</Link> </Text></Button>
     </View>
     </KeyboardAvoidingView>
   </>)
