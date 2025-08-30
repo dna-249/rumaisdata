@@ -44,7 +44,7 @@ export default function Login() {
       user:user,
       password:password,
       header:tokens
-    }).then(res =>{useNavigation(`/${res.data._id}`); setName(res.data); console.log(res.data); alert(user +""+ "is verified successfully")}).catch(err => {alert("invalid username or password");console.log(err)})
+    }).then(res =>{useNavigation(`/${res.data._id}`); console.log(res.data); alert(user +""+ "is verified successfully")}).catch(err => {alert("invalid username or password");console.log(err)})
 
 
   }
