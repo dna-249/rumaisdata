@@ -34,11 +34,11 @@ export default function Login() {
     await axios.post(`https://dnadata.vercel.app/user/login`,{
         name:user,
         password:password
-      }).then(res => {setToken(()=>res.data)})
+      }).then(res => {setToken(()=>res.data); console.log(res)})
       .catch(err => {if(typeof user !== "undefined"){alert(user + "" + "access denied")} else console.log(err)})
    
   }
-  
+  s
   useEffect(() => {
     if(typeof token !== "undefined") {handleVerify();}
   }, [token])
