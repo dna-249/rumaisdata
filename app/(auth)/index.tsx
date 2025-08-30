@@ -1,7 +1,7 @@
 import { HelloWave } from '@/components/HelloWave'
 import { ThemedText } from '@/components/ThemedText'
 import axios from 'axios'
-import { Link, useRouter } from 'expo-router'
+import { Link, useNavigation, useRouter } from 'expo-router'
 import React, { useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import { Button, Text, TextInput, useTheme } from "react-native-paper"
@@ -15,6 +15,9 @@ export default function Login() {
   const [error,setError] = useState('')
   const theme = useTheme()
   const nav = useRouter()
+  const navigation = useNavigation()
+   
+  
 
 
   const handleToggle =()=>{ 
@@ -45,9 +48,9 @@ export default function Login() {
       user:user,
       password:password,
       header:token
-    }).then(res =>{nav.navigate("/home"); console.log(res.data); alert(user +""+ "is verified successfully")}).catch(err => {alert("invalid username or password");console.log(err)})
+    }).then(res =>{navigation.navigate("home",{id:res.data_id}); console.log(res.data); alert(user +""+ "is verified successfully")}).catch(err => {alert("invalid username or password");console.log(err)})
 
-
+ 
   }
   
   return (
