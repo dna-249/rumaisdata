@@ -5,7 +5,7 @@ import { Link } from 'expo-router'
 import React, { useState } from 'react'
 import { FlatList, ScrollView, StyleSheet, View } from 'react-native'
 import { Text, useTheme } from 'react-native-paper'
-function home() {
+function Home() {
   const [toggle,setToggle]=useState(false)
   const handleToggle =()=>{
     setToggle(pre => !pre)
@@ -18,10 +18,13 @@ function home() {
     const data2 = ["3113271035","1% Charge","Account Names","(Cap at N50)","(RumaisData - Your)", "Opay"]
     const data3 = [{item:"Account Names",id:"eye-slash", amt:"N0:00",star:"******"},{star:"******",item:"Referral Bonus",id:"eye-slash",amt:"N0:00"}]
     const icons = ["earth","inbox","iconfontdesktop","bulb1","creditcard","wallet","export","sync","rocket1","team","gift","ellipsis1"]
+   const [on,setOn] = useState<boolean>(false)
   
-  return (
+  
+   return (
     <>
     <ScrollView>
+      
      
       <View style={{backgroundColor:theme.colors.background}}>
         
@@ -68,7 +71,7 @@ function home() {
 </>  )
 }
 
-export default home
+export default Home
 const style = StyleSheet.create({
      item:{
       backgroundColor:"coral",

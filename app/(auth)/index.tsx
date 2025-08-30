@@ -45,7 +45,7 @@ export default function Login() {
       user:user,
       password:password,
       header:token
-    }).then(res =>{nav.navigate("/profile"); console.log(res.data); alert(user +""+ "is verified successfully")}).catch(err => {alert("invalid username or password");console.log(err)})
+    }).then(res =>{nav.navigate("/home"); console.log(res.data); alert(user +""+ "is verified successfully")}).catch(err => {alert("invalid username or password");console.log(err)})
 
 
   }
