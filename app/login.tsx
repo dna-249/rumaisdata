@@ -45,7 +45,7 @@ export default function Login() {
 
   const handleVerify = async() => {
     await axios.post(`https://dnadata.vercel.app/user/verify`,{
-      name:user,
+      user:user,
       password:password,
       header:token
     }).then(res =>{useNavigation(`/${res.data._id}`); setName(res.data); console.log(res.data); alert(user +""+ "is verified successfully")}).catch(err => {alert("invalid username or password");console.log(err)})
