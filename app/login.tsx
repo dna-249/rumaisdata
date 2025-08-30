@@ -2,7 +2,7 @@ import { HelloWave } from '@/components/HelloWave'
 import { ThemedText } from '@/components/ThemedText'
 import axios from 'axios'
 import { Link, useNavigation } from 'expo-router'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import { Button, Text, TextInput, useTheme } from "react-native-paper"
 
@@ -34,20 +34,16 @@ export default function Login() {
     await axios.post(`https://dnadata.vercel.app/user/login`,{
         user:user,
         password:password
-      }).then(res => {setToken(()=>res.data); console.log(res)})
+      }).then(res => {handleVerify(res.data); console.log(res)})
       .catch(err => {if(typeof user !== "undefined"){alert(user + "" + "access denied")} else console.log(err)})
    
   }
   
-  useEffect(() => {
-    if(typeof token !== "undefined") {handleVerify();}
-  }, [token])
-
-  const handleVerify = async() => {
+  const handleVerify = async(tokens:String) => {
     await axios.post(`https://dnadata.vercel.app/user/verify`,{
       user:user,
       password:password,
-      header:token
+      header:tokens
     }).then(res =>{useNavigation(`/${res.data._id}`); setName(res.data); console.log(res.data); alert(user +""+ "is verified successfully")}).catch(err => {alert("invalid username or password");console.log(err)})
 
 
