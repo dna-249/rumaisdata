@@ -12,12 +12,14 @@ import Login from '../login';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-  const [on,setOn] = useState<boolean>(true)
 
+  
+  const [on,setOn] = useState<boolean>(false)
 
-  return (
+ if(on !== true) return  <Login />;
+
+   else return (
     <>
-    {on === true? <Login />:
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
@@ -38,7 +40,7 @@ export default function TabLayout() {
       <Tabs.Screen name='wallet' options={{title:"Wallet",tabBarIcon: ({ color }) => <Entypo size={28} name="wallet" color={color} />}}/>
       <Tabs.Screen name='profile' options={{title:"Profile",tabBarIcon: ({ color }) => <Feather size={28} name="user" color={color} />}}/>
     
-    </Tabs>}
+    </Tabs>
     </>
   );
 }
