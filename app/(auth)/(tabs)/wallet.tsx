@@ -17,15 +17,9 @@ export default function wallet() {
     const nav = useRouter()
   
  useEffect(() => {
-  let online = true
    if(!users){
     nav.replace('/')
    }
-   return() =>{
-    if(!online){
-      nav.replace("/+not-found")
-    }
-      }
  }, [users])
  
 
