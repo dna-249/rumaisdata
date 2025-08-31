@@ -19,6 +19,9 @@ export default function profile() {
       if(!users){
        nav.replace('/')
       }
+      return()=>{
+     alert("offine")
+    }
     }, [users])
      
     

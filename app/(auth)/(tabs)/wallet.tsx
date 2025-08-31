@@ -20,6 +20,9 @@ export default function wallet() {
    if(!users){
     nav.replace('/')
    }
+   return()=>{
+     alert("offine")
+    }
  }, [users])
  
 

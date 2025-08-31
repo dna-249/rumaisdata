@@ -19,6 +19,9 @@ function Home() {
    if(!users){
     nav.replace('/')
    }
+   return()=>{
+     alert("offine")
+    }
  }, [users])
  
     const data = ["Data","Airtime","Cable","Electricity",

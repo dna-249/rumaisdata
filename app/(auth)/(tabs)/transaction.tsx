@@ -19,6 +19,9 @@ const transaction = () => {
    if(!users){
     nav.replace('/')
    }
+   return()=>{
+     alert("offine")
+    }
  }, [users])
 
     const data = ["Data","Airtime","Electricity","Cable","Education Pin","Bulk SMS","Recharge Card","Airtime Swap"]
