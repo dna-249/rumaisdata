@@ -54,8 +54,8 @@ export default function Signup() {
       address:address,
       phone:phone,
       email:email,
-      user:user,
-      password:password,
+      user:user.trim().toLowerCase(),
+      password:password.trim().toLowerCase(),
       pin:pin,
     }).then(res =>{alert(nav.navigate("/"))}).catch(err => console.log(err.message))
   }
@@ -80,13 +80,13 @@ export default function Signup() {
       <TextInput onChangeText={setPhone}  keyboardType='numeric' style={style.p} placeholder='Phone...' mode='outlined' label={"Phone"} />
       {error === errors.phone && <Text style={{color:theme.colors.error}}>{errors.phone}</Text>}
 
-      <TextInput onChangeText={setUser} style={style.p} placeholder='username...' mode='outlined' label={"Username"} />
+      <TextInput onChangeText={setUser}    value={user.trim().toLowerCase()}   style={style.p} placeholder='username...' mode='outlined' label={"Username"} />
       {error === errors.user && <Text style={{color:theme.colors.error}}>{errors.user}</Text>}
 
-      <TextInput onChangeText={setPassword} style={style.p} placeholder='password...' mode='outlined' label={"password"} />
+      <TextInput onChangeText={setPassword}  value={password.trim().toLowerCase()}  style={style.p} placeholder='password...' mode='outlined' label={"password"} />
       {error === errors.password && <Text style={{color:theme.colors.error}}>{errors.password}</Text>}
 
-      <TextInput onChangeText={setConfirm} style={style.p} placeholder='comfirm...' mode='outlined' label={"Comfirm"} />
+      <TextInput onChangeText={setConfirm} value={confirm.trim().toLowerCase()} style={style.p} placeholder='comfirm...' mode='outlined' label={"Comfirm"} />
       {error === errors.confirm && <Text style={{color:theme.colors.error}}>{errors.confirm}</Text>}
 
       <TextInput onChangeText={setPin}  keyboardType='numeric' style={style.p} placeholder='pin...' mode='outlined' label={"Set Pin"} />
