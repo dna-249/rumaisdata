@@ -2,9 +2,10 @@ import { HelloWave } from '@/components/HelloWave'
 import { ThemedText } from '@/components/ThemedText'
 import axios from 'axios'
 import { Link, useRouter } from 'expo-router'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import { Button, Text, TextInput, useTheme } from "react-native-paper"
+import { AppContext } from '../../api/api'
 
 export default function Login() {
   const [toggle,setToggle] = useState(false)
@@ -15,6 +16,7 @@ export default function Login() {
   const [error,setError] = useState('')
   const theme = useTheme()
   const nav = useRouter()
+   const { users, setUsers } = useContext(AppContext);
 
   const handleAunthentication =async()=>{
     if(!user || !password){
@@ -40,7 +42,7 @@ export default function Login() {
       user:user,
       password:password,
       header:token
-    }).then(res =>{ nav.push({pathname: '/home',params:{id: res.data._id } }); console.log(res.data); alert(user +""+ "is verified successfully")})
+    }).then(res =>{ setUsers(()=>res.data._id); nav.push({pathname: '/home',params:{id: res.data._id } }); console.log(res.data); alert(user +""+ "is verified successfully")})
     .catch(err => {alert("invalid username or password");console.log(err)})
 
  
@@ -60,8 +62,7 @@ export default function Login() {
        <View  style={{ width:300}}><Text style ={{alignSelf:"flex-end", color:'blue'}}>forget password</Text></View>
    
       <Button style={style.p} mode='contained' onPress={handleAunthentication}>{"Sign In"}</Button>
-        <Button  mode='text' > <Text style={{fontSize:11}}> Don't you already have an account?  Click
-          <Link style={{color:"blue",textDecorationColor:"underlined"}} href="/signup"> here to signup</Link> </Text></Button>
+        <Button  mode='text' > <Text style={{fontSize:11}}> Don't you already have an account?  Click <Link style={{color:"blue",textDecorationColor:"underlined"}} href="/signup"> here to signup</Link> </Text></Button>
     </View>
     </KeyboardAvoidingView>
   </>)

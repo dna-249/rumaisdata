@@ -1,10 +1,10 @@
 import { ThemedText } from '@/components/ThemedText'
 import { AntDesign, Feather, FontAwesome } from '@expo/vector-icons'
 import axios from "axios"
-import { useLocalSearchParams } from 'expo-router'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { KeyboardAvoidingView, ScrollView, StyleSheet, View } from 'react-native'
 import { Text, useTheme } from "react-native-paper"
+import { AppContext } from '../../../api/api'
    
 
 
@@ -15,14 +15,15 @@ export default function profile() {
   const [password,setPassword] = useState("")
   const [error,setError] = useState('')
   const theme = useTheme()
+  const { users} = useContext(AppContext);
 
-  const { id} = useLocalSearchParams()
-  
+
+ 
 
    useEffect(() => {
-           axios.get(`https://dnadata.vercel.app/user/one/${id}`)
+           axios.get(`https://dnadata.vercel.app/user/one/${users}`)
                    .then(res =>{setName(()=>res.data)}).catch(err => console.log(err))
-       }, [id])
+       }, [users])
      
     
   return (
