@@ -1,26 +1,29 @@
 import { ThemedText } from '@/components/ThemedText'
 import { AntDesign, Feather, FontAwesome } from '@expo/vector-icons'
+import { useLocalSearchParams } from 'expo-router'
 import { useState } from 'react'
 import { KeyboardAvoidingView, ScrollView, StyleSheet, View } from 'react-native'
 import { Text, useTheme } from "react-native-paper"
+   
+
+
 
 export default function profile() {
   const [toggle,setToggle] = useState(false)
-  const [email,setEmail] = useState("")
+  const [name,setName] = useState("")
   const [password,setPassword] = useState("")
   const [error,setError] = useState('')
   const theme = useTheme()
 
-  const handleToggle =()=>{
-    setToggle(pre =>!pre)
-  }
-
-  const handleAunthentication =async()=>{
-    if(!email || !password){
-      setError("please fill the all fields")
-    } else return;
-  }
+  const { id} = useLocalSearchParams()
   
+
+   useEffect(() => {
+           axios.get(`https://dnadata.vercel.app/user/one/${id}`)
+                   .then(res =>{setName(()=>res.data)}).catch(err => console.log(err))
+       }, [id])
+     
+    
   return (
     <> <ScrollView>
     <KeyboardAvoidingView>
@@ -32,8 +35,8 @@ export default function profile() {
                         <ThemedText type="title">Profile</ThemedText>
                         <View  style={{alignSelf:"center",marginBottom:"20px"}}> 
                               <AntDesign name='user' size={100}/>
-                             <ThemedText type="subtitle">Nura Alhaji</ThemedText>
-                              <Text style={{color:"grey"}}>dna1407</Text>
+                             <ThemedText type="subtitle">{name?.name}</ThemedText>
+                              <Text style={{color:"grey"}}>{name?.user}</Text>
                         </View>
                         <Text  style={{fontSize:"20px",color:"grey",fontWeight:"bold"}}>General Settings</Text>
                   </View>
