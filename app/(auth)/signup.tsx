@@ -20,9 +20,7 @@ export default function Signup() {
   const theme = useTheme()
   const nav = useRouter()
 
-  const handleToggle =()=>{
-    setToggle(pre =>!pre)
-  }
+  
   const errors ={
        name:"Full name is required",
        email:"email field is required",
@@ -59,7 +57,7 @@ export default function Signup() {
       user:user,
       password:password,
       pin:pin,
-    }).then(res =>{alert(nav.navigate("/login"))}).catch(err => console.log(err.message))
+    }).then(res =>{alert(nav.navigate("/"))}).catch(err => console.log(err.message))
   }
   return (
     <>
@@ -96,7 +94,8 @@ export default function Signup() {
 
                 
       <Button style={style.p} mode='contained' onPress={handleAunthentication}>Register</Button>
-      <Button  mode='text'> <Text style={{fontSize:11}}> You already have an account?  Click<Link style={{color:"blue",textDecorationColor:"underlined"}} href="/"> here to sign in</Link> </Text></Button>
+      <Button  mode='text'> <Text style={{fontSize:11}}> You already have an account?  Click
+        <Link style={{color:"blue",textDecorationColor:"underlined"}} href="/"> here to sign in</Link> </Text></Button>
          
       </View>
     </KeyboardAvoidingView>

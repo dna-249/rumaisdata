@@ -14,7 +14,9 @@ function Home() {
   const { id} = useLocalSearchParams()
    const theme = useTheme()
 
-
+ const handleToggle =()=>{
+    setToggle(pre => !pre)
+ }
     const data = ["Data","Airtime","Cable","Electricity",
                   "Data Card","Bonus to Wallet","Airtime to Cash","Recharge Pin",
                   "Edu Pin","Affiliate Website","My Referrals","More Service"
