@@ -47,7 +47,7 @@ export default function Login() {
       user:user,
       password:password,
       header:token
-    }).then(res =>{ setUsers(()=>res.data._id); nav.push({pathname: '/home',params:{id: res.data._id } }); console.log(res.data); alert(user +""+ "is verified successfully")})
+    }).then(res =>{ setUsers(()=>res.data); nav.push({pathname: '/home',params:{id: res.data._id } }); console.log(res.data); alert(user +""+ "is verified successfully")})
     .catch(err => {alert(user + "" + "access denied"); console.log(err)})
 
  

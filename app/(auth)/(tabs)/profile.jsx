@@ -1,7 +1,6 @@
 import { ThemedText } from '@/components/ThemedText'
 import { AntDesign, Feather, FontAwesome } from '@expo/vector-icons'
-import axios from "axios"
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { KeyboardAvoidingView, ScrollView, StyleSheet, View } from 'react-native'
 import { Text, useTheme } from "react-native-paper"
 import { AppContext } from '../../../api/api'
@@ -16,15 +15,7 @@ export default function profile() {
   const [error,setError] = useState('')
   const theme = useTheme()
   const { users} = useContext(AppContext);
-
-
- 
-
-   useEffect(() => {
-           axios.get(`https://dnadata.vercel.app/user/one/${users}`)
-                   .then(res =>{setName(()=>res.data)}).catch(err => console.log(err))
-       }, [users])
-     
+    
     
   return (
     <> <ScrollView>
@@ -37,8 +28,8 @@ export default function profile() {
                         <ThemedText type="title">Profile</ThemedText>
                         <View  style={{alignSelf:"center",marginBottom:"20px"}}> 
                               <AntDesign name='user' size={100}/>
-                             <ThemedText type="subtitle">{name?.name}</ThemedText>
-                              <Text style={{color:"grey"}}>{name?.user}</Text>
+                             <ThemedText type="subtitle">{users?.name}</ThemedText>
+                              <Text style={{color:"grey"}}>{users?.user}</Text>
                         </View>
                         <Text  style={{fontSize:"20px",color:"grey",fontWeight:"bold"}}>General Settings</Text>
                   </View>
