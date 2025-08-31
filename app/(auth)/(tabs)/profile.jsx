@@ -16,12 +16,15 @@ export default function profile() {
   const theme = useTheme()
   const { users} = useContext(AppContext);
     useEffect(() => {
+      let online = true
       if(!users){
        nav.replace('/')
       }
-      return()=>{
-     alert("offine")
+       return() =>{
+    if(!online){
+      nav.replace("/+not-found")
     }
+      }
     }, [users])
      
     

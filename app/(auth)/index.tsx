@@ -36,8 +36,9 @@ export default function Login() {
       .catch(err => {if(!user){alert(user + "" + "access denied")} else console.log(err)})
    
   }
-
+  
   useEffect(() => {
+    
     if(token) {handleVerify();}
   }, [token])
   

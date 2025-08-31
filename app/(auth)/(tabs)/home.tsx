@@ -16,12 +16,15 @@ function Home() {
     setToggle(pre => !pre)
  }
  useEffect(() => {
+  let online = true
    if(!users){
     nav.replace('/')
    }
-   return()=>{
-     alert("offine")
+    return() =>{
+    if(!online){
+      nav.replace("/+not-found")
     }
+      }
  }, [users])
  
     const data = ["Data","Airtime","Cable","Electricity",
