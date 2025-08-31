@@ -1,9 +1,9 @@
+import { AppContext } from '@/api/api'
 import { ThemedText } from '@/components/ThemedText'
 import { AntDesign, Feather, FontAwesome } from '@expo/vector-icons'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { KeyboardAvoidingView, ScrollView, StyleSheet, View } from 'react-native'
 import { Text, useTheme } from "react-native-paper"
-import { AppContext } from '../../../api/api'
    
 
 
