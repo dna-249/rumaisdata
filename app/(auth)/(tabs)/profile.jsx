@@ -1,7 +1,8 @@
 import { ThemedText } from '@/components/ThemedText'
 import { AntDesign, Feather, FontAwesome } from '@expo/vector-icons'
+import axios from "axios"
 import { useLocalSearchParams } from 'expo-router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, ScrollView, StyleSheet, View } from 'react-native'
 import { Text, useTheme } from "react-native-paper"
    
