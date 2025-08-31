@@ -1,13 +1,20 @@
+import { AppContext } from '@/api/api'
 import { AntDesign } from '@expo/vector-icons'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { useTheme } from 'react-native-paper'
+
+
 const transaction = () => {
     const [toggle,setToggle] = useState(false)
     const [show,setShow] = useState(-1600)
     const [select,setSelect] = useState<String>("Data")
     const theme = useTheme()
+     const { users } = useContext(AppContext);
+    
+
+
     const data = ["Data","Airtime","Electricity","Cable","Education Pin","Bulk SMS","Recharge Card","Airtime Swap"]
     const handleToggle =()=>{
         if(show === -300){

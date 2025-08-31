@@ -1,8 +1,10 @@
+import { AppContext } from '@/api/api'
 import { ThemedText } from '@/components/ThemedText'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { TextInput, useTheme } from "react-native-paper"
+
 
 export default function wallet() {
   const [toggle,setToggle] = useState(false)
@@ -10,6 +12,8 @@ export default function wallet() {
   const [password,setPassword] = useState("")
   const [error,setError] = useState('')
   const theme = useTheme()
+   const { users } = useContext(AppContext);
+  
 
 
   return (

@@ -1,19 +1,16 @@
+import { AppContext } from '@/api/api'
 import { HelloWave } from '@/components/HelloWave'
 import { ThemedText } from '@/components/ThemedText'
 import { AntDesign, Feather, Ionicons } from '@expo/vector-icons'
-import axios from 'axios'
-import { useLocalSearchParams } from 'expo-router'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { FlatList, ScrollView, StyleSheet, View } from 'react-native'
 import { Text, useTheme } from 'react-native-paper'
 
 
 function Home() {
   const [toggle,setToggle]=useState(false)
-  const [name,setName]=useState<any>('')
-  const { id} = useLocalSearchParams()
-   const theme = useTheme()
-
+  const theme = useTheme()
+  const {users} = useContext(AppContext)
  const handleToggle =()=>{
     setToggle(pre => !pre)
  }
@@ -25,11 +22,7 @@ function Home() {
     const data3 = [{item:"Account Names",id:"eye-slash", amt:"N0:00",star:"******"},{star:"******",item:"Referral Bonus",id:"eye-slash",amt:"N0:00"}]
     const icons = ["earth","inbox","iconfontdesktop","bulb1","creditcard","wallet","export","sync","rocket1","team","gift","ellipsis1"]
   
-    useEffect(() => {
-         axios.get(`https://dnadata.vercel.app/user/one/${id}`)
-                 .then(res =>{setName(()=>res.data)}).catch(err => console.log(err))
-     }, [id])
-   
+    
   
    return (
     <>
@@ -39,7 +32,7 @@ function Home() {
       <View style={{backgroundColor:theme.colors.background}}>
         
               <View style={[style.cont2,{ justifyContent:"space-between",flexDirection:"row",padding:20}] }> 
-              <ThemedText type='subtitle'>Welcome Back!<HelloWave/><br/><Text>{name?.user}</Text></ThemedText>
+              <ThemedText type='subtitle'>Welcome Back!<HelloWave/><br/><Text>{users?.user}</Text></ThemedText>
               <Text> <Ionicons name='notifications' size={24}/></Text>
                 </View>
                         

@@ -1,3 +1,4 @@
+import { AppContext } from '@/api/api'
 import { HelloWave } from '@/components/HelloWave'
 import { ThemedText } from '@/components/ThemedText'
 import axios from 'axios'
@@ -5,7 +6,6 @@ import { Link, useRouter } from 'expo-router'
 import React, { useContext, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import { Button, Text, TextInput, useTheme } from "react-native-paper"
-import { AppContext } from '../../api/api'
 
 export default function Login() {
   const [toggle,setToggle] = useState(false)
