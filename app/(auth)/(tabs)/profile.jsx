@@ -15,7 +15,12 @@ export default function profile() {
   const [error,setError] = useState('')
   const theme = useTheme()
   const { users} = useContext(AppContext);
-    
+    useEffect(() => {
+      if(!users){
+       nav.replace('/')
+      }
+    }, [users])
+     
     
   return (
     <> <ScrollView>

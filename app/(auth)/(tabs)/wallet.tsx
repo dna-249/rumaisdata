@@ -1,6 +1,7 @@
 import { AppContext } from '@/api/api'
 import { ThemedText } from '@/components/ThemedText'
-import React, { useContext, useState } from 'react'
+import { useRouter } from 'expo-router'
+import React, { useContext, useEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { TextInput, useTheme } from "react-native-paper"
@@ -13,8 +14,14 @@ export default function wallet() {
   const [error,setError] = useState('')
   const theme = useTheme()
    const { users } = useContext(AppContext);
+    const nav = useRouter()
   
-
+ useEffect(() => {
+   if(!users){
+    nav.replace('/')
+   }
+ }, [users])
+ 
 
   return (
     <>
