@@ -38,7 +38,7 @@ export default function Login() {
   }
 
   useEffect(() => {
-    if(!token) {handleVerify();}
+    if(token) {handleVerify();}
   }, [token])
   
   
@@ -48,7 +48,7 @@ export default function Login() {
       password:password,
       header:token
     }).then(res =>{ setUsers(()=>res.data._id); nav.push({pathname: '/home',params:{id: res.data._id } }); console.log(res.data); alert(user +""+ "is verified successfully")})
-    .catch(err => {console.log(err)})
+    .catch(err => {alert(user + "" + "access denied"); console.log(err)})
 
  
   }
