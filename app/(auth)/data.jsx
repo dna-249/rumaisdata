@@ -18,7 +18,7 @@ const Data = ()=>{
               <KeyboardAvoidingView>
               <View style={{backgroundColor:theme.colors.background}}>
                     <View>
-                       <Text> {data?.MTN_DATA.map((item,index)=>{return(
+                       <Text> {data?.MTN_DATA?.map((item,index)=>{return(
                         <>
                         <Text key={index}>{item.size}</Text>
                         <Text key={index}>{item.network}</Text>
