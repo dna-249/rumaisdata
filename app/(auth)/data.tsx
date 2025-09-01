@@ -8,19 +8,19 @@ const Data = ()=>{
     useEffect(()=>{
 
 
-    const handleRequest =async()=>{
+    const handleRequest =()=>{
     axios.get("https://dnadata.vercel.app/mtn/api")
          .then(res =>{setData(res.data); console.log(res.data.MTN_DATA)}).catch(err => console.log(err))
     };handleRequest()},[])
     return(
           <View>
-           <FlatList numColumns={2} renderItem={(({item}) =>{return(
+           <FlatList data={data}  renderItem={(({item,index}) =>{return(
             <>
-            <ThemedText>{item.size}</ThemedText>
-            <ThemedText>{item.network}</ThemedText>
-            <ThemedText>{item.plan}</ThemedText>
+            <ThemedText key={index}>{item.size}</ThemedText>
+            <ThemedText key={index}>{item.network}</ThemedText>
+            <ThemedText key={index}>{item.plan}</ThemedText>
             </>
-            )})} data={data}/>
+            )})} />
           </View>
       )
 }
