@@ -4,7 +4,7 @@ import { KeyboardAvoidingView, ScrollView, Text, View } from "react-native"
 import { useTheme } from "react-native-paper"
 
 const Data = ()=>{
-    const [data,setData] = useState<any>()
+    const [data,setData] = useState('')
     const theme = useTheme()
     useEffect(()=>{
 
@@ -18,7 +18,7 @@ const Data = ()=>{
               <KeyboardAvoidingView>
               <View style={{backgroundColor:theme.colors.background}}>
                     <View>
-                       <Text> {data?.map((item:any,index:any)=>{return(
+                       <Text> {data?.map((item,index)=>{return(
                         <>
                         <Text key={index}>{item.size}</Text>
                         <Text key={index}>{item.network}</Text>
