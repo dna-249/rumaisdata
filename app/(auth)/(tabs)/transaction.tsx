@@ -5,6 +5,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { useTheme } from 'react-native-paper'
+import Data from '../data'
 
 const transaction = () => {
     const [toggle,setToggle] = useState(false)
@@ -49,6 +50,7 @@ const transaction = () => {
                                   <View style={{height:300,paddingBottom:20}}>
                                     <FlatList  data={data} renderItem={({item,index})=>{return(<Text style={{fontSize:16,padding:10}} key={index} onPress={()=>handleSelect(item)}>{item}</Text>)}}/>
                                 </View>
+                                <Data />
                               </ScrollView>
                         </View>
                     </View>
