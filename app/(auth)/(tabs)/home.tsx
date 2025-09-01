@@ -56,13 +56,15 @@ function Home() {
        <ThemedText  style={[style.cont2A,{ justifyContent:"space-between"}] }>{toggle? item.amt:item.star} <Feather style={{position:"relative",left:30}} size={20} onPress={handleToggle} name={[`${toggle? "eye":"eye-off"}`]}/></ThemedText >
         
         )}}/> 
-         <Text style={style.box}><AntDesign  name="plussquare"/> Fund Wallet</Text>    
+         
+         <Text style={style.box} onPress={()=>nav.navigate('/data')}><AntDesign  name="plussquare"/> Fund Wallet</Text>    
      </View>
 
      <View style={[style.cont4,{backgroundColor:theme.colors.primary}]}>
        <FlatList data={data2} numColumns={2} renderItem={({item})=>{return(
         <ThemedText  style={style.cont2A}>{item}</ThemedText >
         )}}/> 
+         
          
      </View>
 

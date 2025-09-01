@@ -11,14 +11,14 @@ const Data = ()=>{
 
     const handleRequest =()=>{
     axios.get("https://dnadata.vercel.app/mtn/api")
-         .then(res =>{setData(res.data); console.log(res.data.MTN_DATA)}).catch(err => console.log(err))
+         .then(res =>{setData(res.data); console.log(res?.data?.MTN_DATA)}).catch(err => console.log(err))
     };handleRequest()},[])
     return(
           <ScrollView>
               <KeyboardAvoidingView>
               <View style={{backgroundColor:theme.colors.background}}>
                     <View>
-                       <Text> {data.map((item:any,index:any)=>{return(
+                       <Text> {data?.map((item:any,index:any)=>{return(
                         <>
                         <Text key={index}>{item.size}</Text>
                         <Text key={index}>{item.network}</Text>
