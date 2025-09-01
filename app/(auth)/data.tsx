@@ -1,10 +1,11 @@
-import { ThemedText } from "@/components/ThemedText"
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { FlatList, View } from "react-native"
+import { KeyboardAvoidingView, ScrollView, Text, View } from "react-native"
+import { useTheme } from "react-native-paper"
 
 const Data = ()=>{
-    const [data,setData] = useState()
+    const [data,setData] = useState<any>()
+    const theme = useTheme()
     useEffect(()=>{
 
 
@@ -13,15 +14,22 @@ const Data = ()=>{
          .then(res =>{setData(res.data); console.log(res.data.MTN_DATA)}).catch(err => console.log(err))
     };handleRequest()},[])
     return(
-          <View>
-           <FlatList data={data}  renderItem={(({item,index}) =>{return(
-            <>
-            <ThemedText key={index}>{item.size}</ThemedText>
-            <ThemedText key={index}>{item.network}</ThemedText>
-            <ThemedText key={index}>{item.plan}</ThemedText>
-            </>
-            )})} />
-          </View>
+          <ScrollView>
+              <KeyboardAvoidingView>
+              <View style={{backgroundColor:theme.colors.background}}>
+                    <View>
+                       <Text> {data.map((item:any,index:any)=>{return(
+                        <>
+                        <Text key={index}>{item.size}</Text>
+                        <Text key={index}>{item.network}</Text>
+                        <Text key={index}>{item.plan}</Text>
+                        </>
+                        )})}</Text>
+                    </View>
+                </View>
+              </KeyboardAvoidingView>
+          </ScrollView>
+
       )
 }
 export default Data
