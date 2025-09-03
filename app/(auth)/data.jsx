@@ -27,7 +27,7 @@ const Data = ()=>{
                             <Image style={style.img} onPress={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /> 
                      </View>
                      <View>
-                       <Text> {data?.network?.map((item,index)=>{return(
+                       <Text> {data?.MTN_DATA?.map((item,index)=>{return(
                         <>
                         <Text key={index}>{item.size}</Text>
                         <Text key={index}>{item.network}</Text>
