@@ -3,7 +3,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { Image, KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from "react-native"
 import { FlatList } from "react-native-gesture-handler"
-import { Button, TextInput, useTheme } from "react-native-paper"
+import { TextInput, useTheme } from "react-native-paper"
 
 const Data = ()=>{
     const [data,setData] = useState('')
@@ -31,9 +31,9 @@ const Data = ()=>{
                        <FlatList data={data?.MTN_DATA} numColumns={3}
                        renderItem={(item,index)=>{return(
                         <>
-                        <Button mode="contained"  style={style.item}>
+                        <View style={style.item}>
                         <Text key={index}>{item.plan}</Text>
-                       </Button> 
+                       </View> 
                        </>
                         )}}
                        />
@@ -68,6 +68,7 @@ const style = StyleSheet.create({
   item:{
     padding:5,
     borderRadius:5,
+    backgroundColor:"white"
     
   } 
 })
