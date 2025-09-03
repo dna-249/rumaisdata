@@ -26,7 +26,8 @@ const Data = ()=>{
                             <Image style={style.img} onPress={()=>setNetwork("AIRTEL_DATA")} source={require('@/assets/images/airtel.jpg')} /> 
                             <Image style={style.img} onPress={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /> 
                      </View>
-                     <View>
+                     <ScrollView>
+                     <View style={{height:300}}>
                        <FlatList data={data?.MTN_DATA} numColumns={1}
                        renderItem={({item,index})=>{return(
                         <>
@@ -37,6 +38,7 @@ const Data = ()=>{
                         )}}
                        />
                     </View>
+                    </ScrollView>
                  </View>
                 </View>
               </KeyboardAvoidingView>
@@ -67,7 +69,8 @@ const style = StyleSheet.create({
   item:{
     padding:10,
     borderRadius:10,
-    backgroundColor:"#eee"
+    backgroundColor:"#eee",
+    marginTop:5
     
   } 
 })
