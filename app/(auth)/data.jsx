@@ -2,7 +2,7 @@ import { ThemedText } from "@/components/ThemedText"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Image, KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from "react-native"
-import { Button, TextInput, useTheme } from "react-native-paper"
+import { TextInput, useTheme } from "react-native-paper"
 
 const Data = ()=>{
     const [data,setData] = useState('')
@@ -29,11 +29,9 @@ const Data = ()=>{
                      <View>
                        <Text> {data?.network?.map((item,index)=>{return(
                         <>
-                        <Button mode="contained"  style={style.item}>
                         <Text key={index}>{item.size}</Text>
                         <Text key={index}>{item.network}</Text>
                         <Text key={index}>{item.plan}</Text>
-                       </Button> 
                        </>
                         )})}
                         </Text>
