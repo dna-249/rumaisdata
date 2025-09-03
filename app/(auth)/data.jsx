@@ -9,12 +9,10 @@ const Data = ()=>{
     const [network,setNetwork] = useState()
     const theme = useTheme()
     useEffect(()=>{
-
-
     const handleRequest =()=>{
     axios.get("https://dnadata.vercel.app/mtn/api")
          .then(res =>{setData(res.data); console.log(res.data)}).catch(err => console.log(err))
-    };handleRequest()},[])
+    };handleRequest()},[network])
     return(
           <ScrollView>
               <KeyboardAvoidingView>
