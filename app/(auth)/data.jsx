@@ -68,7 +68,6 @@ const style = StyleSheet.create({
   item:{
     padding:5,
     borderRadius:5,
-    backgroundColor:"white",
-    color:"black"
+    
   } 
 })
