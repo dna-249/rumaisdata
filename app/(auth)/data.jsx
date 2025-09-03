@@ -2,6 +2,7 @@ import { ThemedText } from "@/components/ThemedText"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Image, KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from "react-native"
+import { FlatList } from "react-native-gesture-handler"
 import { Button, TextInput, useTheme } from "react-native-paper"
 
 const Data = ()=>{
@@ -27,14 +28,15 @@ const Data = ()=>{
                             <Image style={style.img} onPress={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /> 
                      </View>
                      <View>
-                       <Text> {data?.MTN_DATA?.map((item,index)=>{return(
+                       <FlatList data={data?.MTN_DATA} numColumns={3}
+                       renderItem={(item,index)=>{return(
                         <>
                         <Button mode="contained"  style={style.item}>
                         <Text key={index}>{item.plan}</Text>
                        </Button> 
                        </>
-                        )})}
-                        </Text>
+                        )}}
+                       />
                     </View>
                  </View>
                 </View>
@@ -64,7 +66,9 @@ const style = StyleSheet.create({
 
   },
   item:{
-    padding:10,
-    borderRadius:10,
+    padding:5,
+    borderRadius:5,
+    backgroundColor:"white",
+    color:"black"
   } 
 })
