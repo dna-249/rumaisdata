@@ -27,7 +27,7 @@ const Data = ()=>{
                             <Image style={style.img} onPress={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /> 
                      </View>
                      <View>
-                       <FlatList data={data?.MTN_DATA} numColumns={3}
+                       <FlatList data={data?.MTN_DATA} numColumns={1}
                        renderItem={({item,index})=>{return(
                         <>
                         <View style={style.item}>
@@ -65,9 +65,9 @@ const style = StyleSheet.create({
 
   },
   item:{
-    padding:5,
-    borderRadius:5,
-    backgroundColor:"white"
+    padding:10,
+    borderRadius:10,
+    backgroundColor:"#eee"
     
   } 
 })
