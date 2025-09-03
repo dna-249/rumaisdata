@@ -22,13 +22,13 @@ const Data = ()=>{
                     <TextInput style={{width:300}}  placeholder="Phone Number" mode="outlined" label={"Phone Number"}/>
                      <ThemedText style={{padding:10}} >Select Network</ThemedText> 
                      <View  style={style.cont}>
-                            <Image  style={style.img}  onPress={()=>setNetwork("MTN_DATA")} source={require('@/assets/images/mtn.png')} /> 
-                            <Image style={style.img} onPress={()=>setNetwork("AIRTEL_DATA")} source={require('@/assets/images/airtel.jpg')} /> 
-                            <Image style={style.img} onPress={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /> 
+                            <Image  style={style.img}  onClick={()=>setNetwork("MTN_DATA")} source={require('@/assets/images/mtn.png')} /> 
+                            <Image style={style.img} onClick={()=>setNetwork("AIRTEL_DATA")} source={require('@/assets/images/airtel.jpg')} /> 
+                            <Image style={style.img} onClick={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /> 
                      </View>
                      <ScrollView>
-                     <View style={{height:300}}>
-                       <FlatList data={data?.MTN_DATA} numColumns={1}
+                     <View style={{height:300,padding:10}}>
+                       <FlatList data={data?.network} numColumns={1}
                        renderItem={({item,index})=>{return(
                         <>
                         <View style={style.item}>
