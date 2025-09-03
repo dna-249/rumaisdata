@@ -10,6 +10,7 @@ const Data = ()=>{
     const theme = useTheme()
     useEffect(()=>{
     const handleRequest =()=>{
+      console.log(network)
     axios.get("https://dnadata.vercel.app/mtn/api")
          .then(res =>{setData(res.data); console.log(res.data)}).catch(err => console.log(err))
     };handleRequest()},[network])
@@ -28,7 +29,7 @@ const Data = ()=>{
                      </View>
                      <ScrollView>
                      <View style={{height:300,padding:10}}>
-                       <FlatList data={data?.network} numColumns={1}
+                       <FlatList data={data?.[`${network}`]} numColumns={1}
                        renderItem={({item,index})=>{return(
                         <>
                         <View style={style.item}>
