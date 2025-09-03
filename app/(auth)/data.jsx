@@ -30,8 +30,6 @@ const Data = ()=>{
                        <Text> {data?.MTN_DATA?.map((item,index)=>{return(
                         <>
                         <Button mode="contained"  style={style.item}>
-                        <Text key={index}>{item.size}</Text>
-                        <Text key={index}>{item.network}</Text>
                         <Text key={index}>{item.plan}</Text>
                        </Button> 
                        </>
