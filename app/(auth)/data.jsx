@@ -51,7 +51,7 @@ const Data = ()=>{
                     </ScrollView>
                  </View>
                   : <View> 
-                    <Text style={{textAlign:"center",marginTop:20}}> Data Plan Selected:</Text>
+                    <Text style={{textAlign:"center",marginTop:20, color:"coral",marginBottom:20}}> Data Plan Selected</Text>
                     <View  style={style.item}>
                        <Text>{select.plan}</Text></View>
                     <Button  mode="contained" style={{backgroundColor:"green",color:"white",marginTop:20}}>Pay</Button> 
@@ -81,7 +81,8 @@ const style = StyleSheet.create({
   } ,
   cont:{
     display:"flex",
-    flexDirection:"row"
+    flexDirection:"row",
+    alignSelf:"center"
 
   },
   item:{
