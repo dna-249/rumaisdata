@@ -51,11 +51,11 @@ const Data = ()=>{
                     </View>
                     </ScrollView>
                  </View>
-                  : <View style={style.div}> 
+                  : <View> 
                     <Text> Data Plan Selected:</Text>
                     <View  style={style.item}>
-                       <Text style={{marginTop:10,marginBottom:10}}>{select.plan}</Text></View>
-                    <Button mode="contained" style={{backgroundColor:"green",color:"white"}}>Pay</Button> 
+                       <Text>{select.plan}</Text></View>
+                    <Button  mode="contained" style={{backgroundColor:"green",color:"white"}}>Pay</Button> 
                   </View> }
                  </View>
 
