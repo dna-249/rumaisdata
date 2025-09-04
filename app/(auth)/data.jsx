@@ -6,8 +6,8 @@ import { Button, TextInput, useTheme } from "react-native-paper"
 
 const Data = ()=>{
     const [data,setData] = useState('')
-    const [network,setNetwork] = useState(["MTN_DATA"])
-    const [select,setSelect] = useState([''])
+    const [network,setNetwork] = useState("MTN_DATA")
+    const [select,setSelect] = useState(false)
     const [toggle,setToggle] = useState(true)
     const theme = useTheme()
     useEffect(()=>{
@@ -53,7 +53,9 @@ const Data = ()=>{
                     </ScrollView>
                  </View>
                   : <View> 
-                    <Text> Data Plan Selected:<br/>{select}</Text>
+                    <Text> Data Plan Selected:</Text>
+                    <View  style={style.item}>
+                       <Text>{select.plan}</Text></View>
                     <Button mode="contained" style={{backgroundColor:"green",color:"white"}}>Pay</Button> 
                   </View> }
                  </View>
