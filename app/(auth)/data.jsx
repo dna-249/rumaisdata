@@ -7,7 +7,7 @@ import { Button, TextInput, useTheme } from "react-native-paper"
 const Data = ()=>{
     const [data,setData] = useState('')
     const [network,setNetwork] = useState("MTN_DATA")
-    const [select,setSelect] = useState(false)
+    const [select,setSelect] = useState([''])
     const [toggle,setToggle] = useState(true)
     const theme = useTheme()
     useEffect(()=>{
@@ -40,13 +40,12 @@ const Data = ()=>{
                      </View>
                      <ScrollView>
                      <View style={{height:300,padding:10}}>
-                       <FlatList data={data?.[`${network}`]} numColumns={1}
-                       renderItem={({item,index})=>{return(
-                        <>
+                       <FlatList data={data?.[`${network}`]}
+                                 numColumns={1}
+                                 renderItem={({item,index})=>{return(
                         <View style={style.item}>
                         <Text onClick={()=>handleSelect(item)} key={index}>{item}</Text>
                        </View> 
-                       </>
                         )}}
                        />
                     </View>
