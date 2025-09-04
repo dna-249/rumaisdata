@@ -7,7 +7,7 @@ import { Button, TextInput, useTheme } from "react-native-paper"
 const Data = ()=>{
     const [data,setData] = useState('')
     const [network,setNetwork] = useState("MTN_DATA")
-    const [select,setSelect] = useState(true)
+    const [select,setSelect] = useState(false)
     const [toggle,setToggle] = useState(true)
     const theme = useTheme()
     useEffect(()=>{
@@ -15,6 +15,13 @@ const Data = ()=>{
     axios.get("https://dnadata.vercel.app/mtn/api")
          .then(res =>{setData(res.data); console.log(res.data)}).catch(err => console.log(err))
     };handleRequest()},[network])
+
+   
+
+    const handleSelect = (item)=>{
+      setSelect(item)
+      setToggle(false)
+    }
     return(
           <ScrollView>
               <KeyboardAvoidingView>
@@ -37,7 +44,7 @@ const Data = ()=>{
                        renderItem={({item,index})=>{return(
                         <>
                         <View style={style.item}>
-                        <Text onPress={setSelect(()=>{item ;setToggle(false)})} key={index}>{item.plan}</Text>
+                        <Text onClick={()=>handleSelect(item)} key={index}>{item}</Text>
                        </View> 
                        </>
                         )}}
