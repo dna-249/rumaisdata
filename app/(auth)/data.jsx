@@ -2,11 +2,13 @@ import { ThemedText } from "@/components/ThemedText"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { FlatList, Image, KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from "react-native"
-import { TextInput, useTheme } from "react-native-paper"
+import { Button, TextInput, useTheme } from "react-native-paper"
 
 const Data = ()=>{
     const [data,setData] = useState('')
     const [network,setNetwork] = useState("MTN_DATA")
+    const [select,setSelect] = useState(true)
+    const [toggle,setToggle] = useState(true)
     const theme = useTheme()
     useEffect(()=>{
     const handleRequest =()=>{
@@ -20,8 +22,11 @@ const Data = ()=>{
                 <View style={style.div}>
                     <TextInput style={{width:300}} readOnly  value="100"  label={"Wallet balance"}/>
                     <TextInput style={{width:300}}  placeholder="Phone Number" mode="outlined" label={"Phone Number"}/>
+
+                    {toggle? <View>
                      <ThemedText style={{padding:10}} >Select Network</ThemedText> 
                      <View  style={style.cont}>
+
                             <Image  style={style.img}  onClick={()=>setNetwork("MTN_DATA")} source={require('@/assets/images/mtn.png')} /> 
                             <Image style={style.img} onClick={()=>setNetwork("AIRTEL_DATA")} source={require('@/assets/images/airtel.jpg')} /> 
                             <Image style={style.img} onClick={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /> 
@@ -32,7 +37,7 @@ const Data = ()=>{
                        renderItem={({item,index})=>{return(
                         <>
                         <View style={style.item}>
-                        <Text key={index}>{item.plan}</Text>
+                        <Text onPress={setSelect(()=>{item ;setToggle(false)})} key={index}>{item.plan}</Text>
                        </View> 
                        </>
                         )}}
@@ -40,6 +45,12 @@ const Data = ()=>{
                     </View>
                     </ScrollView>
                  </View>
+                  : <View> 
+                    <Text> Data Plan Selected:<br/>{select}</Text>
+                    <Button mode="contained" style={{backgroundColor:"green",color:"white"}}>Pay</Button> 
+                  </View> }
+                 </View>
+
                 </View>
               </KeyboardAvoidingView>
           </ScrollView>
