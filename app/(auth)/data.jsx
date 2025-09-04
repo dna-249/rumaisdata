@@ -1,21 +1,18 @@
 import { ThemedText } from "@/components/ThemedText"
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { FlatList, Image, KeyboardAvoidingView, ScrollView, StyleSheet, View } from "react-native"
+import { FlatList, Image, KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from "react-native"
 import { TextInput, useTheme } from "react-native-paper"
+
 const Data = ()=>{
     const [data,setData] = useState('')
     const [network,setNetwork] = useState("MTN_DATA")
     const theme = useTheme()
     useEffect(()=>{
     const handleRequest =()=>{
-      console.log(network)
     axios.get("https://dnadata.vercel.app/mtn/api")
          .then(res =>{setData(res.data); console.log(res.data)}).catch(err => console.log(err))
     };handleRequest()},[network])
-
-
-    const data2 = ["a","a","c"]
     return(
           <ScrollView>
               <KeyboardAvoidingView>
@@ -25,22 +22,21 @@ const Data = ()=>{
                     <TextInput style={{width:300}}  placeholder="Phone Number" mode="outlined" label={"Phone Number"}/>
                      <ThemedText style={{padding:10}} >Select Network</ThemedText> 
                      <View  style={style.cont}>
-                            <Image style={style.img}  onClick={()=>setNetwork("MTN_DATA")} source={require('@/assets/images/mtn.png')} /> 
+                            <Image  style={style.img}  onClick={()=>setNetwork("MTN_DATA")} source={require('@/assets/images/mtn.png')} /> 
                             <Image style={style.img} onClick={()=>setNetwork("AIRTEL_DATA")} source={require('@/assets/images/airtel.jpg')} /> 
                             <Image style={style.img} onClick={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /> 
                      </View>
                      <ScrollView>
                      <View style={{height:300,padding:10}}>
-                      <select>
-                       <FlatList data={data2} numColumns={1}
+                       <FlatList data={data?.[`${network}`]} numColumns={1}
                        renderItem={({item,index})=>{return(
                         <>
                         <View style={style.item}>
-                            <option value={item.plan}> {item.plan} </option>
-                         </View> 
+                        <Text key={index}>{item.plan}</Text>
+                       </View> 
                        </>
                         )}}
-                       /></select>
+                       />
                     </View>
                     </ScrollView>
                  </View>
