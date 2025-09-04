@@ -30,7 +30,7 @@ const Data = ()=>{
                     <TextInput style={{width:300}} readOnly  value="100"  label={"Wallet balance"}/>
                     <TextInput style={{width:300}}  placeholder="Phone Number" mode="outlined" label={"Phone Number"}/>
 
-                    {toggle? <View>
+                    {toggle? <View style={style.div}>
                      <ThemedText style={{padding:10}} >Select Network</ThemedText> 
                      <View  style={style.cont}>
 
@@ -51,10 +51,10 @@ const Data = ()=>{
                     </View>
                     </ScrollView>
                  </View>
-                  : <View> 
+                  : <View style={style.div}> 
                     <Text> Data Plan Selected:</Text>
                     <View  style={style.item}>
-                       <Text>{select.plan}</Text></View>
+                       <Text style={{marginTop:10,marginBottom:10}}>{select.plan}</Text></View>
                     <Button mode="contained" style={{backgroundColor:"green",color:"white"}}>Pay</Button> 
                   </View> }
                  </View>
