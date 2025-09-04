@@ -55,7 +55,7 @@ const Data = ()=>{
                     <Text> Data Plan Selected:</Text>
                     <View  style={style.item}>
                        <Text>{select.plan}</Text></View>
-                    <Button  mode="contained" style={{backgroundColor:"green",color:"white"}}>Pay</Button> 
+                    <Button  mode="contained" style={{backgroundColor:"green",color:"white",marginTop:10}}>Pay</Button> 
                   </View> }
                  </View>
 
