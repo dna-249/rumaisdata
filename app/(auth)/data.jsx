@@ -28,12 +28,11 @@ const Data = ()=>{
               <View style={{backgroundColor:theme.colors.background}}>
                 <View style={style.div}>
                     <TextInput style={{width:300}} readOnly  value="100"  label={"Wallet balance"}/>
-                    <TextInput style={{width:300}}  placeholder="Phone Number" mode="outlined" label={"Phone Number"}/>
+                    <TextInput style={{width:300,marginTop:20}}  placeholder="Phone Number" mode="outlined" label={"Phone Number"}/>
 
                     {toggle? <View>
-                     <ThemedText style={{padding:10}} >Select Network</ThemedText> 
+                     <ThemedText style={{padding:10,textAlign:"center"}} >Select Network</ThemedText> 
                      <View  style={style.cont}>
-
                             <Image  style={style.img}  onClick={()=>setNetwork("MTN_DATA")} source={require('@/assets/images/mtn.png')} /> 
                             <Image style={style.img} onClick={()=>setNetwork("AIRTEL_DATA")} source={require('@/assets/images/airtel.jpg')} /> 
                             <Image style={style.img} onClick={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /> 
@@ -52,10 +51,10 @@ const Data = ()=>{
                     </ScrollView>
                  </View>
                   : <View> 
-                    <Text> Data Plan Selected:</Text>
+                    <Text style={{textAlign:"center",marginTop:20}}> Data Plan Selected:</Text>
                     <View  style={style.item}>
                        <Text>{select.plan}</Text></View>
-                    <Button  mode="contained" style={{backgroundColor:"green",color:"white",marginTop:10}}>Pay</Button> 
+                    <Button  mode="contained" style={{backgroundColor:"green",color:"white",marginTop:20}}>Pay</Button> 
                   </View> }
                  </View>
 
