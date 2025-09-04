@@ -44,7 +44,7 @@ const Data = ()=>{
                                  numColumns={1}
                                  renderItem={({item,index})=>{return(
                         <View style={style.item}>
-                        <Text onClick={()=>handleSelect(item)} key={index}>{item}</Text>
+                        <Text onClick={()=>handleSelect(item)} key={index}>{item.plan}</Text>
                        </View> 
                         )}}
                        />
