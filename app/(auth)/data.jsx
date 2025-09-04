@@ -6,8 +6,8 @@ import { Button, TextInput, useTheme } from "react-native-paper"
 
 const Data = ()=>{
     const [data,setData] = useState('')
-    const [network,setNetwork] = useState("MTN_DATA")
-    const [select,setSelect] = useState(false)
+    const [network,setNetwork] = useState(["MTN_DATA"])
+    const [select,setSelect] = useState([''])
     const [toggle,setToggle] = useState(true)
     const theme = useTheme()
     useEffect(()=>{
