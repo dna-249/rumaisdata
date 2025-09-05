@@ -8,7 +8,7 @@ const Data = ()=>{
     const [data,setData] = useState('')
     const [network,setNetwork] = useState("MTN_DATA")
     const [select,setSelect] = useState([''])
-    const [toggle,setToggle] = useState(true)
+    const [toggle,setToggle] = useState(false)
     const theme = useTheme()
     useEffect(()=>{
     const handleRequest =()=>{
@@ -56,7 +56,7 @@ const Data = ()=>{
                        <Text>{select.plan}</Text></View>
                     <Button  mode="contained" style={{backgroundColor:"green",color:"white",marginTop:20}}>Pay</Button> 
                   
-                  <Button  mode="elevated" onClick={()=>setToggle(true)} style={{marginTop:20,marginBottom:200}}>Back</Button> 
+                  <Button  mode="text" onPress={()=>setToggle(true)} style={{marginTop:20,marginBottom:200}}>Back</Button> 
                  </View> }
                  </View>
 
