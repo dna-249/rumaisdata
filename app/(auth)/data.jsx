@@ -55,7 +55,9 @@ const Data = ()=>{
                     <View  style={style.item}>
                        <Text>{select.plan}</Text></View>
                     <Button  mode="contained" style={{backgroundColor:"green",color:"white",marginTop:20}}>Pay</Button> 
-                  </View> }
+                  
+                  <Button  mode="elevated" onClick={()=>setToggle(true)} style={{marginTop:20,marginBottom:200}}>Back</Button> 
+                 </View> }
                  </View>
 
                 </View>
