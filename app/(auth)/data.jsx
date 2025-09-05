@@ -25,13 +25,13 @@ const Data = ()=>{
     return(
           <ScrollView>
               <KeyboardAvoidingView>
-              <View style={{backgroundColor:theme.colors.background}}>
+              <View style={{backgroundColor:theme.colors.background,height:"100hv"}}>
                 <View style={style.div}>
                     <TextInput style={{width:300}} readOnly  value="100"  label={"Wallet balance"}/>
                     <TextInput style={{width:300,marginTop:20}}  placeholder="Phone Number" mode="outlined" label={"Phone Number"}/>
 
                     {toggle? <View>
-                     <ThemedText style={{padding:10,textAlign:"center"}} >Select Network</ThemedText> 
+                     <ThemedText style={{padding:10, fontWeight:"bold",textAlign:"center"}} >Select Network</ThemedText> 
                      <View  style={style.cont}>
                             <View style={[network === "MTN_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}><Image  style={style.img}  onClick={()=>setNetwork("MTN_DATA")} source={require('@/assets/images/mtn.png')} /></View> 
                            <View style={[network === "AIRTEL_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("AIRTEL_DATA")} source={require('@/assets/images/airtel.jpg')} /> </View>
@@ -51,7 +51,7 @@ const Data = ()=>{
                     </ScrollView>
                  </View>
                   : <View> 
-                    <Text style={{textAlign:"center",marginTop:20, color:"coral",marginBottom:20}}> Data Plan Selected</Text>
+                    <Text style={{textAlign:"center",marginTop:20, fontWeight:"bold", color:"coral",marginBottom:20}}> Data Plan Selected</Text>
                     <View  style={style.item}>
                        <Text>{select.plan}</Text></View>
                     <Button  mode="contained" style={{backgroundColor:"green",color:"white",marginTop:20}}>Pay</Button> 
