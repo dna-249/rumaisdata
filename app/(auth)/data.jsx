@@ -33,9 +33,9 @@ const Data = ()=>{
                     {toggle? <View>
                      <ThemedText style={{padding:10,textAlign:"center"}} >Select Network</ThemedText> 
                      <View  style={style.cont}>
-                            <Image  style={style.img}  onClick={()=>setNetwork("MTN_DATA")} source={require('@/assets/images/mtn.png')} /> 
-                            <Image style={style.img} onClick={()=>setNetwork("AIRTEL_DATA")} source={require('@/assets/images/airtel.jpg')} /> 
-                            <Image style={style.img} onClick={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /> 
+                            <View style={[network === "MTN_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}><Image  style={style.img}  onClick={()=>setNetwork("MTN_DATA")} source={require('@/assets/images/mtn.png')} /></View> 
+                           <View style={[network === "AIRTEL_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("AIRTEL_DATA")} source={require('@/assets/images/airtel.jpg')} /> </View>
+                           <View style={[network === "GLO_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /></View> 
                      </View>
                      <ScrollView>
                      <View style={{height:300,padding:10}}>
