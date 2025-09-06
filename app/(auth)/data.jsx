@@ -2,7 +2,7 @@ import { ThemedText } from "@/components/ThemedText"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { FlatList, Image, KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from "react-native"
-import { ActivityIndicator, Button, Snackbar, TextInput, useTheme } from "react-native-paper"
+import { Button, TextInput, useTheme } from "react-native-paper"
 import useIndicator from "./useIndicator"
 
 
@@ -10,7 +10,7 @@ const Data = ()=>{
     const [data,setData] = useState('')
     const [network,setNetwork] = useState("MTN_DATA")
     const [select,setSelect] = useState([''])
-    const [toggle,setToggle] = useState(false)
+    const [toggle,setToggle] = useState(true)
     const [visible,setVisible] = useState('')
     const [show,setShow] = useState(true)
 
@@ -31,15 +31,9 @@ const Data = ()=>{
  
     return(
           <ScrollView>
-              <KeyboardAvoidingView>
-                {indicator}  
+              <KeyboardAvoidingView> 
               <View style={{backgroundColor:theme.colors.background,height:"100hv"}}>
-                <View style={style.div}>
-                  <Snackbar visible={visible} onDismiss={() => setVisible(false)}>
-                             Request completed successfully!
-                             </Snackbar>
-
-                   <ActivityIndicator animating={true} size="large" />
+                <View style={style.div}>   
                     <TextInput style={{width:300}} readOnly  value="100"  label={"Wallet balance"}/>
                     <TextInput style={{width:300,marginTop:20}}  placeholder="Phone Number" mode="outlined" label={"Phone Number"}/>
 
