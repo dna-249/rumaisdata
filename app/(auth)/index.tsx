@@ -35,7 +35,7 @@ export default function Login() {
         user:user.trim().toLowerCase(),
         password:password.trim().toLowerCase()
       }).then(res => {setToken(res.data);setText("Authentication...");console.log(res)})
-      .catch(err => {if(!user){alert(user + "" + "access denied"); setLoading(false)
+      .catch(err => {if(!user){setText("Access Denied"); setLoading(false)
       } else console.log(err)})
    
   }
@@ -52,9 +52,9 @@ export default function Login() {
       password:password.trim().toLowerCase(),
       header:token
     }).then(res =>{ setUsers(()=>res.data);setText("Verification successfully") ;nav.push({pathname: '/home',params:{id: res.data._id } }); console.log(res.data); })
-    .catch(err => {alert(user + "" + "access denied"); console.log(err)})
+    .catch(err => {setText("Access Denied"); console.log(err)})
     setLoading(false)
-
+    setText("Please Wait...")
  
   }
   
