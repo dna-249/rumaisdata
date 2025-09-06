@@ -30,8 +30,9 @@ export default function Login() {
   }
 
   const handleLogin = async () => {
-   setLoading(true)
    setText("Please Wait...")
+   setLoading(true)
+   
     await axios.post(`https://dnadata.vercel.app/user/login`,{
         user:user.trim().toLowerCase(),
         password:password.trim().toLowerCase()
