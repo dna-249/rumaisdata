@@ -36,7 +36,7 @@ export default function Login() {
         password:password.trim().toLowerCase()
       }).then(res => {setToken(res.data);setText("Authentication...");console.log(res)})
       .catch(err => {if(!user){setText("Access Denied"); setLoading(false)
-      } else {setText("oops network err!");setLoading(false)}})
+      } else console.log(err.message)})
    
   }
   
