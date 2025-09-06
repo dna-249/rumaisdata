@@ -20,6 +20,7 @@ export default function RootLayout() {
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="signup" options={{ headerShown: false }} />
         <Stack.Screen name="data" options={{ headerShown: false }} />
+        <Stack.Screen name="indicator" options={{ headerShown: false }} />
       </Stack>
       </AppProvider>
  <StatusBar style="auto" />

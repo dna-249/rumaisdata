@@ -6,6 +6,7 @@ import { Link, useRouter } from 'expo-router'
 import React, { useContext, useEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import { Button, Text, TextInput, useTheme } from "react-native-paper"
+import useIndicator from './useIndicator'
 
 export default function Login() {
   const [toggle,setToggle] = useState(false)
@@ -17,6 +18,7 @@ export default function Login() {
   const theme = useTheme()
   const nav = useRouter()
    const { users, setUsers } = useContext(AppContext);
+   const {indicator,setLoading,setText} = useIndicator()
 
   const handleAunthentication =async()=>{
     if(!user || !password){
@@ -28,12 +30,13 @@ export default function Login() {
   }
 
   const handleLogin = async () => {
-   
+   setLoading(true)
     await axios.post(`https://dnadata.vercel.app/user/login`,{
         user:user.trim().toLowerCase(),
         password:password.trim().toLowerCase()
-      }).then(res => {setToken(res.data);console.log(res)})
-      .catch(err => {if(!user){alert(user + "" + "access denied")} else console.log(err)})
+      }).then(res => {setToken(res.data);setText("Authentication...");console.log(res)})
+      .catch(err => {if(!user){alert(user + "" + "access denied"); setLoading(false)
+      } else console.log(err)})
    
   }
   
@@ -48,8 +51,9 @@ export default function Login() {
       user:user.trim().toLowerCase(),
       password:password.trim().toLowerCase(),
       header:token
-    }).then(res =>{ setUsers(()=>res.data); nav.push({pathname: '/home',params:{id: res.data._id } }); console.log(res.data); alert(user +""+ "is verified successfully")})
+    }).then(res =>{ setUsers(()=>res.data);setText("Verification successfully") ;nav.push({pathname: '/home',params:{id: res.data._id } }); console.log(res.data); })
     .catch(err => {alert(user + "" + "access denied"); console.log(err)})
+    setLoading(false)
 
  
   }
@@ -58,6 +62,7 @@ export default function Login() {
   return (
     <>
     <KeyboardAvoidingView>
+      {indicator}
     <View style={style.div}>
       <ThemedText type='subtitle'>{"Welcome Back"}<HelloWave/></ThemedText>
       <View  style={{ width:300}}><Text style ={{alignSelf:"center", color:'coral',padding:10}}>Sign in to your Account</Text></View>

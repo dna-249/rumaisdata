@@ -2,13 +2,19 @@ import { ThemedText } from "@/components/ThemedText"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { FlatList, Image, KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from "react-native"
-import { Button, TextInput, useTheme } from "react-native-paper"
+import { ActivityIndicator, Button, Snackbar, TextInput, useTheme } from "react-native-paper"
+import useIndicator from "./useIndicator"
+
 
 const Data = ()=>{
     const [data,setData] = useState('')
     const [network,setNetwork] = useState("MTN_DATA")
     const [select,setSelect] = useState([''])
     const [toggle,setToggle] = useState(false)
+    const [visible,setVisible] = useState('')
+    const [show,setShow] = useState(true)
+
+    const {indicator } = useIndicator()
     const theme = useTheme()
     useEffect(()=>{
     const handleRequest =()=>{
@@ -22,11 +28,18 @@ const Data = ()=>{
       setSelect(item)
       setToggle(false)
     }
+ 
     return(
           <ScrollView>
               <KeyboardAvoidingView>
+                {indicator}  
               <View style={{backgroundColor:theme.colors.background,height:"100hv"}}>
                 <View style={style.div}>
+                  <Snackbar visible={visible} onDismiss={() => setVisible(false)}>
+                             Request completed successfully!
+                             </Snackbar>
+
+                   <ActivityIndicator animating={true} size="large" />
                     <TextInput style={{width:300}} readOnly  value="100"  label={"Wallet balance"}/>
                     <TextInput style={{width:300,marginTop:20}}  placeholder="Phone Number" mode="outlined" label={"Phone Number"}/>
 
@@ -57,6 +70,7 @@ const Data = ()=>{
                     <Button  mode="contained" style={{backgroundColor:"green",color:"white",marginTop:20}}>Pay</Button> 
                   
                   <Button  mode="text" onPress={()=>setToggle(true)} style={{marginTop:20,marginBottom:200}}>Back</Button> 
+               
                  </View> }
                  </View>
 
@@ -68,6 +82,12 @@ const Data = ()=>{
 }
 export default Data
 const style = StyleSheet.create({
+    flex:{
+     display:"flex",
+     alignContent:"center",
+     justifyContent:"center",
+     margin:"auto"
+  },
       div:{
     paddingTop:120,
     display:"flex",
