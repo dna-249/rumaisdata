@@ -3,7 +3,6 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { FlatList, Image, KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from "react-native"
 import { Button, TextInput, useTheme } from "react-native-paper"
-import useIndicator from "./useIndicator"
 
 
 const Data = ()=>{
@@ -14,7 +13,7 @@ const Data = ()=>{
     const [visible,setVisible] = useState('')
     const [show,setShow] = useState(true)
 
-    const {indicator } = useIndicator()
+    
     const theme = useTheme()
     useEffect(()=>{
     const handleRequest =()=>{

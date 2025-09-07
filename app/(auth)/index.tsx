@@ -18,7 +18,7 @@ export default function Login() {
   const theme = useTheme()
   const nav = useRouter()
    const { users, setUsers } = useContext(AppContext);
-   const {indicator,setLoading,setText} = useIndicator()
+   const {indicator,indicator2,setLoading,setText,setVisible} = useIndicator()
 
   const handleAunthentication =async()=>{
     if(!user || !password){
@@ -30,16 +30,16 @@ export default function Login() {
   }
 
   const handleLogin = async () => {
-   setText("Please Wait...")
+    setText("Please Wait...")
    setLoading(true)
    
     await axios.post(`https://dnadata.vercel.app/user/login`,{
         user:user.trim().toLowerCase(),
         password:password.trim().toLowerCase()
-      }).then(res => {setToken(res.data);setText("Authentication...");console.log(res)})
+      }).then(res => {setToken(res.data);setText("Authentication...");setVisible(true);console.log(res)})
       .catch(err => {if(!user){setText("Access Denied"); setLoading(false)
-      } else {setText("invalid user or password")}})
-      setLoading(false);
+      } else {setText("network error");setVisible(true);setLoading(false)}})
+      ;
   }
   
   useEffect(() => {
@@ -53,7 +53,7 @@ export default function Login() {
       user:user.trim().toLowerCase(),
       password:password.trim().toLowerCase(),
       header:token
-    }).then(res =>{ setUsers(()=>res.data);setText("Verification successfully") ;nav.push({pathname: '/home',params:{id: res.data._id } }); console.log(res.data); })
+    }).then(res =>{ setUsers(()=>res.data);setText("Verification successfully");setVisible(true) ;nav.push({pathname: '/home',params:{id: res.data._id } }); console.log(res.data); })
     .catch(err => {setText("Access Denied"); console.log(err)})
     setLoading(false)
     setText("Please Wait...")
@@ -65,6 +65,7 @@ export default function Login() {
     <>
     <KeyboardAvoidingView>
       {indicator}
+      {indicator2}
     <View style={style.div}>
       <ThemedText type='subtitle'>{"Welcome Back"}<HelloWave/></ThemedText>
       <View  style={{ width:300}}><Text style ={{alignSelf:"center", color:'coral',padding:10}}>Sign in to your Account</Text></View>
