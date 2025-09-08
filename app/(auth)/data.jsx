@@ -11,7 +11,7 @@ const Data = ()=>{
     const [data,setData] = useState('')
     const [network,setNetwork] = useState("MTN_DATA")
     const [select,setSelect] = useState([''])
-    const [toggle,setToggle] = useState(false)
+    const [toggle,setToggle] = useState(true)
     const [show,setShow] = useState(true)
     const [error,setError] = useState('')
     const [phone,setPhone] = useState('')
@@ -65,7 +65,7 @@ const {indicator,indicator2,setLoading,setText,setVisible} = useIndicator()
                     <TextInput style={{width:300,marginTop:20}} onChange={(e)=>setPhone(e.target.value)}  placeholder="Phone Number" mode="outlined" label={"Phone Number"}/>
 
                     {toggle? <View>
-                     <ThemedText style={{padding:10, fontWeight:"bold",textAlign:"center"}}  onClick={()=>handleSelect2()} >Select Network</ThemedText> 
+                     <ThemedText style={{padding:10, fontWeight:"bold",textAlign:"center"}}  >Select Network</ThemedText> 
                      <View  style={style.cont}>
                             <View style={[network === "MTN_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}><Image  style={style.img}  onClick={()=>setNetwork("MTN_DATA")} source={require('@/assets/images/mtn.png')} /></View> 
                             <View style={[network === "AIRTEL_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("AIRTEL_DATA")} source={require('@/assets/images/airtel.jpg')} /> </View>
