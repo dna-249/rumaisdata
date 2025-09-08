@@ -9,10 +9,10 @@ const Data = ()=>{
     const [data,setData] = useState('')
     const [network,setNetwork] = useState("MTN_DATA")
     const [select,setSelect] = useState([''])
-    const [toggle,setToggle] = useState(true)
+    const [toggle,setToggle] = useState(false)
     const [visible,setVisible] = useState('')
     const [show,setShow] = useState(true)
-    const [size,setSize] = useState('')
+    const [error,setError] = useState('')
     const [phone,setPhone] = useState('')
 
     
@@ -25,9 +25,9 @@ const Data = ()=>{
 
     const handleBuying =()=>{
     axios.post("https://dnadata.vercel.app/mtn/buy",{
-      size:size,
+      size:select.size,
       phone:phone,
-      network:network.slice(-1,4)
+      network:network.slice(0,-5)
     })
          .then(res =>{setData(res.data); console.log(res.data)}).catch(err => console.log(err))
     };
@@ -35,9 +35,18 @@ const Data = ()=>{
     const handleSelect = (item)=>{
       setSelect(item)
       setToggle(false)
-      setSize(item.size),
-      console.log(network.slice(-1,4))
     }
+    
+
+    const handleAunthentication =async()=>{
+      console.log("its")
+    if(!select || !phone){
+      setError("Please fill the all fields")
+    } else {
+      setError("")
+      handleBuying()
+    }
+  }
  
     return(
           <ScrollView>
@@ -48,11 +57,11 @@ const Data = ()=>{
                     <TextInput style={{width:300,marginTop:20}} onChange={(e)=>setPhone(e.target.value)}  placeholder="Phone Number" mode="outlined" label={"Phone Number"}/>
 
                     {toggle? <View>
-                     <ThemedText style={{padding:10, fontWeight:"bold",textAlign:"center"}} >Select Network</ThemedText> 
+                     <ThemedText style={{padding:10, fontWeight:"bold",textAlign:"center"}}  onClick={()=>handleSelect2()} >Select Network</ThemedText> 
                      <View  style={style.cont}>
                             <View style={[network === "MTN_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}><Image  style={style.img}  onClick={()=>setNetwork("MTN_DATA")} source={require('@/assets/images/mtn.png')} /></View> 
-                           <View style={[network === "AIRTEL_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("AIRTEL_DATA")} source={require('@/assets/images/airtel.jpg')} /> </View>
-                           <View style={[network === "GLO_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /></View> 
+                            <View style={[network === "AIRTEL_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("AIRTEL_DATA")} source={require('@/assets/images/airtel.jpg')} /> </View>
+                            <View style={[network === "GLO_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /></View> 
                      </View>
                      <ScrollView>
                      <View style={{height:300,padding:10}}>
@@ -71,7 +80,8 @@ const Data = ()=>{
                     <Text style={{textAlign:"center",marginTop:20, fontWeight:"bold", color:"coral",marginBottom:20}}> Data Plan Selected</Text>
                     <View  style={style.item}>
                        <Text>{select.plan}</Text></View>
-                    <Button  mode="contained" style={{backgroundColor:"green",color:"white",marginTop:20}} onClick={()=>handleBuying()}>Pay</Button> 
+                      {error && <Text style={{color:theme.colors.error}}>{error}</Text>}
+                    <Button  mode="contained" style={{backgroundColor:"green",color:"white",marginTop:20}} onPress={()=>handleAunthentication()}>Pay</Button> 
                   
                   <Button  mode="text" onPress={()=>setToggle(true)} style={{marginTop:20,marginBottom:200}}>Back</Button> 
                
