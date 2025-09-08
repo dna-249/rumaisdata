@@ -41,6 +41,13 @@ export default function Login() {
       } else {setText("network error");setVisible(true);setLoading(false)}})
       ;
   }
+
+  useEffect(() => {
+    window.addEventListener("online",()=> alert("online"))
+    window.addEventListener("offline",()=> alert("offlinen"))
+
+  }, [])
+  
   
   useEffect(() => {
     

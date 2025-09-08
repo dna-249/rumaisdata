@@ -6,7 +6,7 @@ const useIndicator = () => {
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const [text, setText] = useState("Please Wait...");
-  const snackbar =()=>{return(<Snackbar style={{alignSelf:"center",color:'white',fontSize:"large", margin:"auto"}} visible={visible} onDismiss={() => setVisible(false)}>{text} </Snackbar>)}
+  const snackbar =()=>{return(<Snackbar style={{alignSelf:"center",color:'white', fontSize:"large", margin:"auto"}} visible={visible} onDismiss={() => setVisible(false)}>{text} </Snackbar>)}
   const indicator2 = snackbar()                 
 
   const handleIndicator = () => {
