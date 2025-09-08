@@ -1,6 +1,7 @@
+import { AppContext } from "@/api/api"
 import { ThemedText } from "@/components/ThemedText"
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { FlatList, Image, KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from "react-native"
 import { Button, TextInput, useTheme } from "react-native-paper"
 
@@ -14,6 +15,7 @@ const Data = ()=>{
     const [show,setShow] = useState(true)
     const [error,setError] = useState('')
     const [phone,setPhone] = useState('')
+      const { users} = useContext(AppContext);
 
     
     const theme = useTheme()
@@ -27,7 +29,9 @@ const Data = ()=>{
     axios.post("https://dnadata.vercel.app/mtn/buy",{
       size:select.size,
       phone:phone,
-      network:network.slice(0,-5)
+      network:network.slice(0,-5),
+      date:Date().slice(0,21),
+      userId:users._id
     })
          .then(res =>{setData(res.data); console.log(res.data)}).catch(err => console.log(err))
     };
