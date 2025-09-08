@@ -12,6 +12,8 @@ const Data = ()=>{
     const [toggle,setToggle] = useState(true)
     const [visible,setVisible] = useState('')
     const [show,setShow] = useState(true)
+    const [size,setSize] = useState('')
+    const [phone,setPhone] = useState('')
 
     
     const theme = useTheme()
@@ -21,11 +23,20 @@ const Data = ()=>{
          .then(res =>{setData(res.data); console.log(res.data)}).catch(err => console.log(err))
     };handleRequest()},[network])
 
-   
+    const handleBuying =()=>{
+    axios.post("https://dnadata.vercel.app/mtn/buy",{
+      size:size,
+      phone:phone,
+      network:network.slice(-1,4)
+    })
+         .then(res =>{setData(res.data); console.log(res.data)}).catch(err => console.log(err))
+    };
 
     const handleSelect = (item)=>{
       setSelect(item)
       setToggle(false)
+      setSize(item.size),
+      console.log(network.slice(-1,4))
     }
  
     return(
@@ -34,7 +45,7 @@ const Data = ()=>{
               <View style={{backgroundColor:theme.colors.background,height:"100hv"}}>
                 <View style={style.div}>   
                     <TextInput style={{width:300}} readOnly  value="100"  label={"Wallet balance"}/>
-                    <TextInput style={{width:300,marginTop:20}}  placeholder="Phone Number" mode="outlined" label={"Phone Number"}/>
+                    <TextInput style={{width:300,marginTop:20}} onChange={(e)=>setPhone(e.target.value)}  placeholder="Phone Number" mode="outlined" label={"Phone Number"}/>
 
                     {toggle? <View>
                      <ThemedText style={{padding:10, fontWeight:"bold",textAlign:"center"}} >Select Network</ThemedText> 
@@ -60,7 +71,7 @@ const Data = ()=>{
                     <Text style={{textAlign:"center",marginTop:20, fontWeight:"bold", color:"coral",marginBottom:20}}> Data Plan Selected</Text>
                     <View  style={style.item}>
                        <Text>{select.plan}</Text></View>
-                    <Button  mode="contained" style={{backgroundColor:"green",color:"white",marginTop:20}}>Pay</Button> 
+                    <Button  mode="contained" style={{backgroundColor:"green",color:"white",marginTop:20}} onClick={()=>handleBuying()}>Pay</Button> 
                   
                   <Button  mode="text" onPress={()=>setToggle(true)} style={{marginTop:20,marginBottom:200}}>Back</Button> 
                
