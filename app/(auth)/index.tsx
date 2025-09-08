@@ -55,11 +55,11 @@ export default function Login() {
     setVisible(true)
   }
   useEffect(() => {
-    window.addEventListener("online",()=> Online)
-    window.addEventListener("offline",()=> Offline)
+    window.addEventListener("online", Online)
+    window.addEventListener("offline", Offline)
     return()=>{
-    window.removeEventListener("online",()=> Online)
-    window.removeEventListener("offline",()=> Offline)
+    window.removeEventListener("online", Online)
+    window.removeEventListener("offline", Offline)
  
     }
   }, [online])
