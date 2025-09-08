@@ -15,6 +15,8 @@ export default function Login() {
   const [name,setName] = useState("")
   const [password,setPassword] = useState("")
   const [error,setError] = useState('')
+  const [online,setOnline] = useState(navigator.onLine)
+
   const theme = useTheme()
   const nav = useRouter()
    const { users, setUsers } = useContext(AppContext);
@@ -42,11 +44,25 @@ export default function Login() {
       ;
   }
 
+  const Online =()=>{
+    setOnline(navigator.onLine)
+    setText("Online")
+    setVisible(true)
+  }
+  const Offline =()=>{
+    setOnline(navigator.onLine)
+    setText("offline")
+    setVisible(true)
+  }
   useEffect(() => {
-    window.addEventListener("online",()=> alert("online"))
-    window.addEventListener("offline",()=> alert("offlinen"))
-
-  }, [])
+    window.addEventListener("online",()=> Online)
+    window.addEventListener("offline",()=> Offline)
+    return()=>{
+    window.removeEventListener("online",()=> Online)
+    window.removeEventListener("offline",()=> Offline)
+ 
+    }
+  }, [online])
   
   
   useEffect(() => {
