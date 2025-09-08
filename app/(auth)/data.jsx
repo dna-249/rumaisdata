@@ -4,6 +4,7 @@ import axios from "axios"
 import { useContext, useEffect, useState } from "react"
 import { FlatList, Image, KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from "react-native"
 import { Button, TextInput, useTheme } from "react-native-paper"
+import useIndicator from "./useIndicator"
 
 
 const Data = ()=>{
@@ -11,11 +12,11 @@ const Data = ()=>{
     const [network,setNetwork] = useState("MTN_DATA")
     const [select,setSelect] = useState([''])
     const [toggle,setToggle] = useState(false)
-    const [visible,setVisible] = useState('')
     const [show,setShow] = useState(true)
     const [error,setError] = useState('')
     const [phone,setPhone] = useState('')
       const { users} = useContext(AppContext);
+const {indicator,indicator2,setLoading,setText,setVisible} = useIndicator()
 
     
     const theme = useTheme()
@@ -26,6 +27,8 @@ const Data = ()=>{
     };handleRequest()},[network])
 
     const handleBuying =()=>{
+      setText("Processing...")
+      setLoading(true)
     axios.post("https://dnadata.vercel.app/mtn/buy",{
       size:select.size,
       phone:phone,
@@ -33,7 +36,7 @@ const Data = ()=>{
       date:Date().slice(0,21),
       userId:users._id
     })
-         .then(res =>{setData(res.data); console.log(res.data)}).catch(err => console.log(err))
+         .then(res =>{setData(res.data);setText(res.data.status);setVisible(true) ;console.log(res.data)}).catch(err => {console.log(err);setText(err.message);setVisible(true)})
     };
 
     const handleSelect = (item)=>{
@@ -56,6 +59,7 @@ const Data = ()=>{
           <ScrollView>
               <KeyboardAvoidingView> 
               <View style={{backgroundColor:theme.colors.background,height:"100hv"}}>
+                {indicator}{indicator2}
                 <View style={style.div}>   
                     <TextInput style={{width:300}} readOnly  value="100"  label={"Wallet balance"}/>
                     <TextInput style={{width:300,marginTop:20}} onChange={(e)=>setPhone(e.target.value)}  placeholder="Phone Number" mode="outlined" label={"Phone Number"}/>
