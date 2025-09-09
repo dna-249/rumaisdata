@@ -29,7 +29,7 @@ const {indicator,indicator2,setLoading,setText,setVisible} = useIndicator()
     const handleBuying =()=>{
       setText("Processing...")
       setLoading(true)
-    axios.post("https://dnadata.vercel.app/mtn/buy",{
+      axios.post("https://dnadata.vercel.app/mtn/buy",{
       size:select.size,
       phone:phone,
       network:network.slice(0,-5),
@@ -61,8 +61,9 @@ const {indicator,indicator2,setLoading,setText,setVisible} = useIndicator()
           <ScrollView>
               <KeyboardAvoidingView> 
               <View style={{backgroundColor:theme.colors.background,height:"100hv"}}>
-                {indicator}{indicator2}
-                <View style={style.div}>   
+                <View style={style.div}>
+                  {indicator}
+                  {indicator2}   
                     <TextInput style={{width:300}} readOnly  value="100"  label={"Wallet balance"}/>
                     <TextInput style={{width:300,marginTop:20}} onChange={(e)=>setPhone(e.target.value)}  placeholder="Phone Number" mode="outlined" label={"Phone Number"}/>
 
