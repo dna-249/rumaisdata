@@ -38,6 +38,7 @@ const {indicator,indicator2,setLoading,setText,setVisible} = useIndicator()
       amount:'amount'
     })
          .then(res =>{setData(res.data);setText(res.status);setVisible(true) ;console.log(res)}).catch(err => {console.log(err);setText(err.message);setVisible(true)})
+    setLoading(false)
     };
 
     const handleSelect = (item)=>{
