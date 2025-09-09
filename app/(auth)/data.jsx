@@ -37,7 +37,7 @@ const {indicator,indicator2,setLoading,setText,setVisible} = useIndicator()
       userId:users._id,
       amount:'amount'
     })
-         .then(res =>{setData(res.data);setText(res.status);setVisible(true) ;console.log(res)}).catch(err => {console.log(err);setText(err.message);setVisible(true)})
+         .then(res =>{setData(res.data);setText(res.data.code);setVisible(true) ;console.log(res)}).catch(err => {console.log(err);setText(res.data.code);setVisible(true)})
     setLoading(false)
     };
 
