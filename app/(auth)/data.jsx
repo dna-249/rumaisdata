@@ -27,8 +27,9 @@ const {indicator,indicator2,setLoading,setText,setVisible} = useIndicator()
     };handleRequest()},[network])
 
     const handleBuying =()=>{
-      setText("Processing...")
       setLoading(true)
+      setText("Processing...")
+      
       axios.post("https://dnadata.vercel.app/mtn/buy",{
       size:select.size,
       phone:phone,
@@ -37,7 +38,7 @@ const {indicator,indicator2,setLoading,setText,setVisible} = useIndicator()
       userId:users._id,
       amount:'amount'
     })
-         .then(res =>{setData(res.data);setText(res.data.code);setVisible(true) ;console.log(res)}).catch(err => {console.log(err);setText(res.data.code);setVisible(true)})
+    .then(res =>{setData(res.data);setText(res.data.code);setVisible(true) ;console.log(res)}).catch(err => {console.log(err);setText(res.data.code);setVisible(true)})
     setLoading(false)
     };
 
