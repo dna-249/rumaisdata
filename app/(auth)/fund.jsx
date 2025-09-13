@@ -26,7 +26,7 @@ const Fund
     const handleRequest =()=>{
     axios.get(`https://dnadata.vercel.app/user/${users?._id}`)
          .then(res =>{setData(res.data); console.log(res.data)}).catch(err => console.log(err))
-    };handleRequest()},[users])
+    };handleRequest()},[])
 
     const handleBuying =()=>{
       setLoading(true)
