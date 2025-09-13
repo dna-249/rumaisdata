@@ -1,7 +1,7 @@
 import { AppContext } from "@/api/api"
 import { ThemedText } from '@/components/ThemedText'
 import axios from "axios"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { KeyboardAvoidingView, ScrollView, StyleSheet, View } from "react-native"
 import { Button, TextInput, useTheme } from "react-native-paper"
 import useIndicator from "./useIndicator"
@@ -11,29 +11,19 @@ import useIndicator from "./useIndicator"
 const Fund
  = ()=>{
     const [data,setData] = useState('')
-    const [network,setNetwork] = useState("MTN_DATA")
-    const [select,setSelect] = useState([''])
-    const [toggle,setToggle] = useState(false)
-    const [show,setShow] = useState(true)
-    const [error,setError] = useState('')
+     const [error,setError] = useState('')
     const [phone,setPhone] = useState('')
     const { users } = useContext(AppContext);
     const {indicator,indicator2,setLoading,setText,setVisible} = useIndicator()
 
     
     const theme = useTheme()
-    useEffect(()=>{
-    const handleRequest =()=>{
-    axios.get(`https://dnadata.vercel.app/user/${users?._id}`)
-         .then(res =>{setData(res.data); console.log(res.data)}).catch(err => console.log(err))
-    };handleRequest()},[])
-
+    
     const handleBuying =()=>{
       setLoading(true)
       setText("Processing...")
 
       axios.post("https://dnadata.vercel.app/mtn/payment",{
-      userId:users?._id,
       amount:phone,
       email:users?.email,
       name:users?.name
@@ -64,8 +54,8 @@ const Fund
               <View style={{backgroundColor:theme.colors.background,height:"100hv"}}>
                 <View style={style.div}>
                      <ThemedText type="subtitle">Fund Your Wallet</ThemedText>
-                    <TextInput style={{width:300,marginTop:20}} readOnly  value={data.name} label={"Account Name"}/>
-                    <TextInput style={{width:300,marginTop:20}} readOnly  value={data.total} label={"Account Balance"}/>
+                    <TextInput style={{width:300,marginTop:20}} readOnly  value={users?.name} label={"Account Name"}/>
+                    <TextInput style={{width:300,marginTop:20}} readOnly  value={users?.total} label={"Account Balance"}/>
                     <TextInput style={{width:300,marginTop:20}} onChange={(e)=>setPhone(e.target.value)}  mode="outlined" label={"Enter Amount"}/>
                        {error && <Text style={{color:theme.colors.error}}>{error}</Text>}
                     <Button style={{width:300,marginTop:20}} mode="contained" onPress={()=>handleAunthentication()}>Fund Your Wallet</Button>
