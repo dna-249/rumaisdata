@@ -21,7 +21,7 @@ function Home() {
    }
  }, [users])
  
-    const data = [{item:"Data", func:()=>{()=>nav.navigate('/data')}},{item:"Airtime"},{item:"Cable"},{item:"Electricity"},{item:
+    const data = [{item:"Data", func:nav.navigate('/data')},{item:"Airtime"},{item:"Cable"},{item:"Electricity"},{item:
                   "Data Card"},{item:"Bonus to Wallet"},{item:"Airtime to Cash"},{item:"Recharge Pin"},{item:
                   "Edu Pin"},{item:"Affiliate Website"},{item:"My Referrals"},{item:"More Service"}
                  ]
@@ -73,7 +73,7 @@ function Home() {
                 renderItem={({item,index})=>{return(
                 <View style={style.div}>
                   <View style={style.item}>
-                <AntDesign onPress={item.func} name={`${icons[index]}`} color={"white"} size={20}/></View>
+                <AntDesign onPress={()=>item.func} name={`${icons[index]}`} color={"white"} size={20}/></View>
                 <ThemedText style={style.iconText}>{item.item}</ThemedText> 
                 </View>
               )}} />
