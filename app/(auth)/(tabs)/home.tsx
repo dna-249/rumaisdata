@@ -57,7 +57,7 @@ function Home() {
         
         )}}/> 
          
-         <Text style={style.box} onPress={()=>nav.navigate('/data')}><AntDesign  name="plussquare"/> Fund Wallet</Text>    
+         <Text style={style.box} onPress={()=>nav.navigate('/fund')}><AntDesign  name="plussquare"/> Fund Wallet</Text>    
      </View>
 
      <View style={[style.cont4,{backgroundColor:theme.colors.primary}]}>

@@ -1,17 +1,17 @@
 import { AppContext } from "@/api/api"
-import { ThemedText } from "@/components/ThemedText"
 import axios from "axios"
 import { useContext, useEffect, useState } from "react"
-import { FlatList, Image, KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from "react-native"
-import { Button, TextInput, useTheme } from "react-native-paper"
+import { KeyboardAvoidingView, ScrollView, StyleSheet, View } from "react-native"
+import { TextInput, useTheme } from "react-native-paper"
 import useIndicator from "./useIndicator"
 
 
-const Data = ()=>{
+const Fund
+ = ()=>{
     const [data,setData] = useState('')
     const [network,setNetwork] = useState("MTN_DATA")
     const [select,setSelect] = useState([''])
-    const [toggle,setToggle] = useState(true)
+    const [toggle,setToggle] = useState(false)
     const [show,setShow] = useState(true)
     const [error,setError] = useState('')
     const [phone,setPhone] = useState('')
@@ -67,37 +67,6 @@ const Data = ()=>{
                   {indicator2}   
                     <TextInput style={{width:300}} readOnly  value="100"  label={"Wallet balance"}/>
                     <TextInput style={{width:300,marginTop:20}} onChange={(e)=>setPhone(e.target.value)}  placeholder="Phone Number" mode="outlined" label={"Phone Number"}/>
-
-                    {toggle? <View>
-                     <ThemedText style={{padding:10, fontWeight:"bold",textAlign:"center"}}  >Select Network</ThemedText> 
-                     <View  style={style.cont}>
-                            <View style={[network === "MTN_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}><Image  style={style.img}  onClick={()=>setNetwork("MTN_DATA")} source={require('@/assets/images/mtn.png')} /></View> 
-                            <View style={[network === "AIRTEL_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("AIRTEL_DATA")} source={require('@/assets/images/airtel.jpg')} /> </View>
-                            <View style={[network === "GLO_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /></View> 
-                     </View>
-                     <ScrollView>
-                     <View style={{height:300,padding:10}}>
-                       <FlatList data={data?.[`${network}`]}
-                                 numColumns={1}
-                                 renderItem={({item,index})=>{return(
-                        <View style={style.item}>
-                        <Text onClick={()=>handleSelect(item)} key={index}>{item.plan}</Text>
-                       </View> 
-                        )}}
-                       />
-                    </View>
-                    </ScrollView>
-                 </View>
-                  : <View> 
-                    <Text style={{textAlign:"center",marginTop:20, fontWeight:"bold", color:"coral",marginBottom:20}}> Data Plan Selected</Text>
-                    <View  style={style.item}>
-                       <Text>{select.plan}</Text></View>
-                      {error && <Text style={{color:theme.colors.error}}>{error}</Text>}
-                    <Button  mode="contained" style={{backgroundColor:"green",color:"white",marginTop:20}} onPress={()=>handleAunthentication()}>Pay</Button> 
-                  
-                  <Button  mode="text" onPress={()=>setToggle(true)} style={{marginTop:20,marginBottom:200}}>Back</Button> 
-               
-                 </View> }
                  </View>
 
                 </View>
@@ -106,7 +75,8 @@ const Data = ()=>{
 
       )
 }
-export default Data
+export default Fund
+
 const style = StyleSheet.create({
     flex:{
      display:"flex",
