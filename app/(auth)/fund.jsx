@@ -8,8 +8,7 @@ import useIndicator from "./useIndicator"
 
 
 
-const Fund
- = ()=>{
+const Fund = ()=>{
     const [data,setData] = useState('')
      const [error,setError] = useState('')
     const [phone,setPhone] = useState('')
@@ -19,17 +18,16 @@ const Fund
     
     const theme = useTheme()
     
-    const handleBuying =()=>{
+    const handleBuying =async()=>{
       setLoading(true)
       setText("Processing...")
 
-      axios.post("https://dnadata.vercel.app/mtn/payment",{
+     await axios.post("https://dnadata.vercel.app/mtn/payment",{
       amount:phone,
       email:users?.email,
       name:users?.name
     })
-    .then(res => {console.log(res);window.location.href = res.data.data.authorization_url;})
-    .then(res =>{setData(res.data);setText(res.data.code);setVisible(true) ;console.log(res)}).catch(err => {console.log(err);setText(res.data.code);setVisible(true)})
+   .then(res =>{window.location.href = res.data.data.authorization_url;setVisible(true);setLoading(false);console.log(res)}).catch(err => {console.log(err);setText(res.data.code);setVisible(true)})
     setLoading(false)
     };
 
