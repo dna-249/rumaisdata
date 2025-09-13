@@ -21,9 +21,9 @@ function Home() {
    }
  }, [users])
  
-    const data = ["Data","Airtime","Cable","Electricity",
-                  "Data Card","Bonus to Wallet","Airtime to Cash","Recharge Pin",
-                  "Edu Pin","Affiliate Website","My Referrals","More Service"
+    const data = [{item:"Data", func:()=>{()=>nav.navigate('/data')}},{item:"Airtime"},{item:"Cable"},{item:"Electricity"},{item:
+                  "Data Card"},{item:"Bonus to Wallet"},{item:"Airtime to Cash"},{item:"Recharge Pin"},{item:
+                  "Edu Pin"},{item:"Affiliate Website"},{item:"My Referrals"},{item:"More Service"}
                  ]
     const data2 = ["3113271035","1% Charge","Account Names","(Cap at N50)","(RumaisData - Your)", "Opay"]
     const data3 = [{item:"Account Names",id:"eye-slash", amt:"N0:00",star:"******"},{star:"******",item:"Referral Bonus",id:"eye-slash",amt:"N0:00"}]
@@ -73,8 +73,8 @@ function Home() {
                 renderItem={({item,index})=>{return(
                 <View style={style.div}>
                   <View style={style.item}>
-                <AntDesign  name={`${icons[index]}`} color={"white"} size={20}/></View>
-                <ThemedText style={style.iconText}>{item}</ThemedText> 
+                <AntDesign onPress={item.func} name={`${icons[index]}`} color={"white"} size={20}/></View>
+                <ThemedText style={style.iconText}>{item.item}</ThemedText> 
                 </View>
               )}} />
       </View>

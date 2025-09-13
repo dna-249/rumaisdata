@@ -11,12 +11,12 @@ const Data = ()=>{
     const [data,setData] = useState('')
     const [network,setNetwork] = useState("MTN_DATA")
     const [select,setSelect] = useState([''])
-    const [toggle,setToggle] = useState(true)
+    const [toggle,setToggle] = useState(false)
     const [show,setShow] = useState(true)
     const [error,setError] = useState('')
     const [phone,setPhone] = useState('')
-      const { users} = useContext(AppContext);
-const {indicator,indicator2,setLoading,setText,setVisible} = useIndicator()
+    const { users } = useContext(AppContext);
+    const {indicator,indicator2,setLoading,setText,setVisible} = useIndicator()
 
     
     const theme = useTheme()
@@ -29,7 +29,7 @@ const {indicator,indicator2,setLoading,setText,setVisible} = useIndicator()
     const handleBuying =()=>{
       setLoading(true)
       setText("Processing...")
-      
+
       axios.post("https://dnadata.vercel.app/mtn/buy",{
       size:select.size,
       phone:phone,
