@@ -2,7 +2,7 @@ import { AppContext } from "@/api/api"
 import { ThemedText } from '@/components/ThemedText'
 import axios from "axios"
 import { useContext, useState } from "react"
-import { KeyboardAvoidingView, ScrollView, StyleSheet, View } from "react-native"
+import { KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from "react-native"
 import { Button, TextInput, useTheme } from "react-native-paper"
 import useIndicator from "./useIndicator"
 
