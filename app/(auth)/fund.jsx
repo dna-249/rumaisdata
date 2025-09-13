@@ -32,7 +32,7 @@ const Fund
       setLoading(true)
       setText("Processing...")
 
-      axios.post("https://dnadata.vercel.app/mtn/buy",{
+      axios.post("https://dnadata.vercel.app/mtn/payment",{
       userId:users?._id,
       amount:phone,
       email:users?.email,
@@ -43,15 +43,11 @@ const Fund
     setLoading(false)
     };
 
-    const handleSelect = (item)=>{
-      setSelect(item)
-      setToggle(false)
-    }
     
 
     const handleAunthentication =async()=>{
       console.log("its")
-    if(!select || !phone){
+    if(!phone){
       setError("Please fill the all fields")
     } else {
       setError("")
@@ -71,7 +67,8 @@ const Fund
                     <TextInput style={{width:300,marginTop:20}} readOnly  value={data.name} label={"Account Name"}/>
                     <TextInput style={{width:300,marginTop:20}} readOnly  value={data.total} label={"Account Balance"}/>
                     <TextInput style={{width:300,marginTop:20}} onChange={(e)=>setPhone(e.target.value)}  mode="outlined" label={"Enter Amount"}/>
-                    <Button style={{width:300,marginTop:20}} mode="contained" >Fund Your Wallet</Button>
+                       {error && <Text style={{color:theme.colors.error}}>{error}</Text>}
+                    <Button style={{width:300,marginTop:20}} mode="contained" onPress={()=>handleAunthentication()}>Fund Your Wallet</Button>
                  </View>
 
                 </View>
