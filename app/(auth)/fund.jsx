@@ -34,7 +34,6 @@ const Fund = ()=>{
     
 
     const handleAunthentication =async()=>{
-      console.log("its")
     if(!phone){
       setError("Please fill the all fields")
     } else {
