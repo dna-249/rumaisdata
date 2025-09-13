@@ -27,9 +27,9 @@ const Fund = ()=>{
       email:users?.email,
       name:users?.name
     })
-   .then(res =>{window.location.href = res.data.data.authorization_url;setVisible(true);setLoading(false);console.log(res)}).catch(err => {console.log(err);setText("error");setVisible(true)})
+   .then(res =>{setText(res.data.status);setLoading(false);setVisible(true);window.location.href = res.data.data.authorization_url;console.log(res)}).catch(err => {console.log(err);setText("error");setVisible(true)})
     setLoading(false)
-    };
+    }
 
     
 
