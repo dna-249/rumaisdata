@@ -38,6 +38,7 @@ const Fund
       email:users?.email,
       name:users?.name
     })
+    .then(res => {console.log(res);window.location.href = res.data.data.authorization_url;})
     .then(res =>{setData(res.data);setText(res.data.code);setVisible(true) ;console.log(res)}).catch(err => {console.log(err);setText(res.data.code);setVisible(true)})
     setLoading(false)
     };
