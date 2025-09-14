@@ -25,7 +25,7 @@ const Fund = ()=>{
      await axios.post("https://dnadata.vercel.app/mtn/payment",{
       amount:phone,
       email:users?.email,
-      name:users?.name
+      name:users?._id
     })
    .then(res =>{setText(res.data.status);setLoading(false);setVisible(true);window.location.href = res.data.data.authorization_url;console.log(res)}).catch(err => {console.log(err);setText("error");setVisible(true)})
     setLoading(false)
