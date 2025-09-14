@@ -26,7 +26,7 @@ function Home() {
                   "Edu Pin"},{item:"Affiliate Website"},{item:"My Referrals"},{item:"More Service"}
                  ]
     const data2 = ["3113271035","1% Charge","Account Names","(Cap at N50)","(RumaisData - Your)", "Opay"]
-    const data3 = [{item:"Account Names",id:"eye-slash", amt:"N0:00",star:"******"},{star:"******",item:"Referral Bonus",id:"eye-slash",amt:"N0:00"}]
+    const data3 = [{item:"Account Names",id:"eye-slash", amt:users?.total,star:"******"},{star:"******",item:"Referral Bonus",id:"eye-slash",amt:"N0:00"}]
     const icons = ["earth","inbox","iconfontdesktop","bulb1","creditcard","wallet","export","sync","rocket1","team","gift","ellipsis1"]
   
     

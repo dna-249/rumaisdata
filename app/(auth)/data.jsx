@@ -66,7 +66,7 @@ const Data = ()=>{
               <View style={{backgroundColor:theme.colors.background,height:"100hv"}}>
                 <View style={style.div}>
                      
-                    <TextInput style={{width:300}} readOnly  value="100"  label={"Wallet balance"}/>
+                    <TextInput style={{width:300}} readOnly  value={users?.total}  label={"Wallet balance"}/>
                     <TextInput style={{width:300,marginTop:20}} onChange={(e)=>setPhone(e.target.value)}  placeholder="Phone Number" mode="outlined" label={"Phone Number"}/>
 
                     {toggle? <View>
