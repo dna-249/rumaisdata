@@ -72,7 +72,7 @@ const Data = ()=>{
             {indicator}
            
               <KeyboardAvoidingView> 
-              <View style={{backgroundColor:theme.colors.background,height:"100hv"}}>
+              <View style={{backgroundColor:theme.colors.background,height:"fit-content"}}>
                 <View style={style.div}>
                       {indicator2}
                     <TextInput style={{width:300}} readOnly  value={users?.total}  label={"Wallet balance"}/>
@@ -86,7 +86,7 @@ const Data = ()=>{
                             <View style={[network === "GLO_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /></View> 
                      </View>
                      <ScrollView>
-                     <View style={{height:300,padding:10}}>
+                     <View style={{height:"fit-content",padding:10}}>
                        <FlatList data={data?.[`${network}`]}
                                  numColumns={1}
                                  renderItem={({item,index})=>{return(
