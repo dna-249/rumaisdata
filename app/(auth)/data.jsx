@@ -36,17 +36,16 @@ const Data = ()=>{
   }
 
     const handleBuying =async()=>{
-
+     const a = Number(select.price)
+     const b = Number(users?.total)
        
 
-      if(select.price > users?.total){
+      if(a > b){
       
         setText("Processing...")
         setVisible(true)
         setText("Insufficent Balance!")
-      } 
-
-      if(select.price < users?.total){
+      } else{
       setText("Processing...")
       setLoading(true)
 
