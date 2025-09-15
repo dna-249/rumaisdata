@@ -56,8 +56,11 @@ const Data = ()=>{
       amount:select.price
     })
     .then(res =>{setData(res.data);setText(res.data.code);setVisible(true);console.log(res);setLoading(false)}).catch(err => {console.log(err);setText(res.data.code);setVisible(true);setLoading(false)})
-    setText("Please Wait...")
-    }};
+    
+    }
+     setText("Processing...")
+    
+  };
 
     const handleSelect = (item)=>{
       setSelect(item)
