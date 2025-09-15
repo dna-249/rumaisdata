@@ -39,9 +39,8 @@ const Data = ()=>{
 
        setText("Processing...")
 
-      if(select.price > users?.total){
-        console.log(select.price)
-        console.log(users?.total)
+      if(select.price < users?.total){
+      
         setText("Insufficent Balance!")
         setVisible(true)
         
