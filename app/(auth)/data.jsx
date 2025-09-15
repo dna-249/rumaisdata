@@ -82,7 +82,7 @@ const Data = ()=>{
                                  numColumns={1}
                                  renderItem={({item,index})=>{return(
                         <View style={style.item}>
-                        <Text onClick={()=>handleSelect(item)} key={index}>{item.plan}</Text>
+                        <Text onClick={()=>handleSelect(item)} key={index}>{item.plan}<br/>N{item.price}</Text>
                        </View> 
                         )}}
                        />
