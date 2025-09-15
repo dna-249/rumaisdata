@@ -88,7 +88,7 @@ const Data = ()=>{
                                  numColumns={1}
                                  renderItem={({item,index})=>{return(
                         <View style={style.item}>
-                        <Text onClick={()=>handleSelect(item)} key={index}>{item.plan}<br/>N{item.price}</Text>
+                        <Text style={{textAlign:"center"}} onClick={()=>handleSelect(item)} key={index}>{item.plan}<br/>N{item.price}</Text>
                        </View> 
                         )}}
                        />
@@ -98,7 +98,7 @@ const Data = ()=>{
                   : <View> 
                     <Text style={{textAlign:"center",marginTop:20, fontWeight:"bold", color:"coral",marginBottom:20}}> Data Plan Selected</Text>
                     <View  style={style.item}>
-                       <Text>{select.plan}</Text></View>
+                       <Text  style={{textAlign:"center"}}>{select.plan}<br/>N{select.price}</Text></View>
                       {error && <Text style={{color:theme.colors.error}}>{error}</Text>}
                     <Button  mode="contained" style={{backgroundColor:"green",color:"white",marginTop:20}} onPress={()=>handleAunthentication()}>Pay</Button> 
                   
