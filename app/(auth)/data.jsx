@@ -102,7 +102,7 @@ const Data = ()=>{
                     <Text style={{textAlign:"center",marginTop:20, fontWeight:"bold", color:"coral",marginBottom:20}}> Data Plan Selected</Text>
                     <View  style={style.item}>
                        <Text  style={{textAlign:"center"}}>{select.plan}<br/>N{select.price}</Text></View>
-                      {error && <Text style={{color:theme.colors.error}}>{error}</Text>}
+                       {indicator2}{error && <Text style={{color:theme.colors.error}}>{error}</Text>}
                     <Button  mode="contained" style={{backgroundColor:"green",color:"white",marginTop:20}} onPress={()=>handleAunthentication()}>Pay</Button> 
                   
                   <Button  mode="text" onPress={()=>setToggle(true)} style={{marginTop:20,marginBottom:200}}>Back</Button> 
