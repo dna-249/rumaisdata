@@ -27,12 +27,10 @@ const Data = ()=>{
     };handleRequest()},[network])
 
     const handleAunthentication =async()=>{
-      console.log("its")
     if(!select || !phone){
       setError("Please fill the all fields")
     } else {
       setError("")
-      setLoading(true)
       handleBuying()
     }
   }
@@ -42,7 +40,7 @@ const Data = ()=>{
       if(select.price > users?.total){
         setText("Insufficent Balance!")
         setVisible(true)
-        setLoading(false)
+        
       }
       else{
       setText("Processing...")
@@ -55,7 +53,7 @@ const Data = ()=>{
       userId:users._id,
       amount:select.price
     })
-    .then(res =>{setData(res.data);setText(res.data.code);setVisible(true); setLoading(false);console.log(res)}).catch(err => {console.log(err);setText(res.data.code);setVisible(true)})
+    .then(res =>{setData(res.data);setText(res.data.code);setVisible(true);console.log(res)}).catch(err => {console.log(err);setText(res.data.code);setVisible(true)})
     setLoading(false)
     }};
 
