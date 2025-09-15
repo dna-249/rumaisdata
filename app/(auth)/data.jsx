@@ -36,8 +36,15 @@ const Data = ()=>{
   }
 
     const handleBuying =async()=>{
+      const sum =()=>{
+        if(!users?.total || users?.total === "undefined"){
+          return "0"
+        }else{ return users?.total}
+      }
+      const sums =sum()
+
      const a = Number(select.price)
-     const b = Number(users?.total)
+     const b = Number(sums)
        
 
       if(a > b){
