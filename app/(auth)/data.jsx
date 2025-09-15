@@ -25,13 +25,14 @@ const Data = ()=>{
     axios.get("https://dnadata.vercel.app/mtn/api")
          .then(res =>{setData(res.data); console.log(res.data)}).catch(err => console.log(err))
     };handleRequest()},[network])
-    
+
     const handleAunthentication =async()=>{
       console.log("its")
     if(!select || !phone){
       setError("Please fill the all fields")
     } else {
       setError("")
+      setLoading(true)
       handleBuying()
     }
   }
