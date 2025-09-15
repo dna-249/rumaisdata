@@ -28,6 +28,12 @@ const Data = ()=>{
 
     const handleBuying =()=>{
       setLoading(true)
+      if(select.price > users?.total){
+        setText("Insufficent Balance!")
+        setVisible(true)
+        setLoading(false)
+      }
+      else{
       setText("Processing...")
 
       axios.post("https://dnadata.vercel.app/mtn/buy",{
@@ -36,11 +42,11 @@ const Data = ()=>{
       network:network.slice(0,-5),
       date:Date().slice(0,21),
       userId:users._id,
-      amount:'amount'
+      amount:select.price
     })
     .then(res =>{setData(res.data);setText(res.data.code);setVisible(true) ;console.log(res)}).catch(err => {console.log(err);setText(res.data.code);setVisible(true)})
     setLoading(false)
-    };
+    }};
 
     const handleSelect = (item)=>{
       setSelect(item)
