@@ -35,21 +35,20 @@ const Data = ()=>{
     }
   }
 
-    const handleBuying =()=>{
+    const handleBuying =async()=>{
 
        setText("Processing...")
-       
-      if(select.price > users?.total){
+
+      if(select.price === users?.total || select.price >= users?.total){
         setText("Insufficent Balance!")
         setVisible(true)
         
         
-      }
-      else{
+      } else{
       setText("Processing...")
       setLoading(true)
 
-      axios.post("https://dnadata.vercel.app/mtn/buy",{
+      await axios.post("https://dnadata.vercel.app/mtn/buy",{
       size:select.size,
       phone:phone,
       network:network.slice(0,-5),
