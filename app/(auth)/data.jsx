@@ -37,15 +37,16 @@ const Data = ()=>{
 
     const handleBuying =async()=>{
 
-       setText("Processing...")
+       
 
-      if(select.price >= users?.total){
+      if(select.price > users?.total){
       
+        setText("Processing...")
         setVisible(true)
         setText("Insufficent Balance!")
-        
       } 
-      else{
+
+      if(select.price < users?.total){
       setText("Processing...")
       setLoading(true)
 
@@ -57,10 +58,9 @@ const Data = ()=>{
       userId:users._id,
       amount:select.price
     })
-    .then(res =>{setData(res.data);setText(res.data.code);setVisible(true);console.log(res);setLoading(false)}).catch(err => {console.log(err);setText(res.data.code);setVisible(true);setLoading(false)})
-    
+    .then(res =>{setData(res.data);setText(res.data.code);setVisible(true);console.log(res);setLoading(false)})
+    .catch(err => {console.log(err);setText(res.data.code);setVisible(true);setLoading(false)})
     } 
-    setText("Processing...")
   };
 
     const handleSelect = (item)=>{
