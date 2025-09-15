@@ -45,7 +45,7 @@ const Data = ()=>{
       }
       else{
       setText("Processing...")
-      setLoading(false)
+      setLoading(true)
 
       axios.post("https://dnadata.vercel.app/mtn/buy",{
       size:select.size,
@@ -56,12 +56,8 @@ const Data = ()=>{
       amount:select.price
     })
     .then(res =>{setData(res.data);setText(res.data.code);setVisible(true);console.log(res);setLoading(false)}).catch(err => {console.log(err);setText(res.data.code);setVisible(true);setLoading(false)})
-    
-    }
-
-    setLoading(false)
     setText("Please Wait...")
-  };
+    }};
 
     const handleSelect = (item)=>{
       setSelect(item)
@@ -76,7 +72,7 @@ const Data = ()=>{
             {indicator}
            
               <KeyboardAvoidingView> 
-              <View style={{backgroundColor:theme.colors.background,height:"fit-content"}}>
+              <View style={{backgroundColor:theme.colors.background,height:"100hv"}}>
                 <View style={style.div}>
                       {indicator2}
                     <TextInput style={{width:300}} readOnly  value={users?.total}  label={"Wallet balance"}/>
@@ -90,7 +86,7 @@ const Data = ()=>{
                             <View style={[network === "GLO_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /></View> 
                      </View>
                      <ScrollView>
-                     <View style={{height:"fit-content",padding:10}}>
+                     <View style={{height:300,padding:10}}>
                        <FlatList data={data?.[`${network}`]}
                                  numColumns={1}
                                  renderItem={({item,index})=>{return(
@@ -109,7 +105,7 @@ const Data = ()=>{
                       {error && <Text style={{color:theme.colors.error}}>{error}</Text>}
                     <Button  mode="contained" style={{backgroundColor:"green",color:"white",marginTop:20}} onPress={()=>handleAunthentication()}>Pay</Button> 
                   
-                  <Button  mode="text" onPress={()=>setToggle(true)} style={{marginTop:20,marginBottom:200}}>Back</Button> 
+                  <Button  mode="text" onPress={()=>setToggle(true)} style={{marginTop:20,marginBottom:100}}>Back</Button> 
                
                  </View> }
                  </View>
