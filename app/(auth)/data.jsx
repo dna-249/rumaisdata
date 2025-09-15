@@ -36,7 +36,9 @@ const Data = ()=>{
   }
 
     const handleBuying =()=>{
-    
+
+       setText("Processing...")
+       
       if(select.price > users?.total){
         setText("Insufficent Balance!")
         setVisible(true)
@@ -57,9 +59,7 @@ const Data = ()=>{
     })
     .then(res =>{setData(res.data);setText(res.data.code);setVisible(true);console.log(res);setLoading(false)}).catch(err => {console.log(err);setText(res.data.code);setVisible(true);setLoading(false)})
     
-    }
-     setText("Processing...")
-    
+    } 
   };
 
     const handleSelect = (item)=>{
