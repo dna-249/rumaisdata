@@ -36,14 +36,22 @@ const Data = ()=>{
   }
 
     const handleBuying =async()=>{
+      const sum =()=>{
+        if(!users?.total || users?.total === "undefined"){
+          return "0"
+        }else{ return users?.total}
+      }
+      const sums =sum()
 
-       setText("Processing...")
+     const a = Number(select.price)
+     const b = Number(sums)
+       
 
-      if(select.price === users?.total || select.price >= users?.total){
-        setText("Insufficent Balance!")
+      if(a > b){
+      
+        setText("Processing...")
         setVisible(true)
-        
-        
+        setText("Insufficent Balance!")
       } else{
       setText("Processing...")
       setLoading(true)
@@ -56,8 +64,8 @@ const Data = ()=>{
       userId:users._id,
       amount:select.price
     })
-    .then(res =>{setData(res.data);setText(res.data.code);setVisible(true);console.log(res);setLoading(false)}).catch(err => {console.log(err);setText(res.data.code);setVisible(true);setLoading(false)})
-    
+    .then(res =>{setData(res.data);setText(res.data.code);setVisible(true);console.log(res);setLoading(false)})
+    .catch(err => {console.log(err);setText(res.data.code);setVisible(true);setLoading(false)})
     } 
   };
 
