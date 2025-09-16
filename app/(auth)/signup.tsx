@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { Button, Text, TextInput, useTheme } from "react-native-paper"
-
+import useIndicator from './useIndicator'
 export default function Signup() {
   const [toggle,setToggle] = useState(false)
   const [email,setEmail] = useState("")
@@ -19,6 +19,8 @@ export default function Signup() {
   const [user,setUser] = useState('')
   const theme = useTheme()
   const nav = useRouter()
+   const {indicator,indicator2,setLoading,setText,setVisible} = useIndicator()
+  
 
   
   const errors ={
@@ -49,6 +51,8 @@ export default function Signup() {
   }
    
   const handleRequest =async()=>{
+    setText("Please Wait...")
+    setLoading(true)
     await axios.post("https://dnadata.vercel.app/user",{
       name:name,
       address:address,
@@ -58,11 +62,13 @@ export default function Signup() {
       password:password.trim().toLowerCase(),
       pin:pin,
       total:"0"
-    }).then(res =>{alert(nav.navigate("/"))}).catch(err => console.log(err.message))
+    }).then(res =>{setText("successfull created");setVisible(true);nav.navigate("/");setLoading(false)}).catch(err =>{ setText("Network Error!");setVisible(true);console.log(err.message)})
   }
   return (
     <>
     <ScrollView>
+      {indicator}
+      {indicator2}
     <KeyboardAvoidingView  enabled={true} behavior='padding'>
     <View style={style.div}>
       <ThemedText type='subtitle'>Create Account</ThemedText>
