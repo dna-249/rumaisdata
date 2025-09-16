@@ -57,6 +57,7 @@ export default function Signup() {
       user:user.trim().toLowerCase(),
       password:password.trim().toLowerCase(),
       pin:pin,
+      total:"0"
     }).then(res =>{alert(nav.navigate("/"))}).catch(err => console.log(err.message))
   }
   return (
