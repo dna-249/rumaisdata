@@ -47,25 +47,26 @@ const transaction = () => {
                           <View  style={{justifyContent:"flex-start",width:20}}><AntDesign name='caretdown' size={24}  onPress={handleToggle}/></View>
                           <View style={{width:300}}><Text style={{fontSize:20,fontWeight:"bold",textAlign:"center"}}>{select}</Text></View>
                     </View>
-                   
-                    
                     <View style={style.flex}>
-                      <ScrollView>
+                    <ScrollView>
                      <View style={{padding:10,alignSelf:"center"}}>
                        <FlatList data={users?.transaction}
                                  numColumns={1}
                                  renderItem={({item,index})=>{return(
-                        <View style={style.flex}>
+                        
                         <View style={{width:300,display:"flex",flexDirection:"row"}}>
                         <Text style={{textAlign:"center", padding:5}} key={index}>{item.status}</Text>
                         <Text style={{textAlign:"center", padding:5}} key={index}>{item.amount}</Text>
                         <Text style={{textAlign:"center", padding:5}} key={index}>{item.size}</Text>
                         <Text style={{textAlign:"center", padding:5}} key={index}>{item.plan}</Text>
                         <Text style={{textAlign:"center", padding:5}} key={index}>{item.date}</Text>
-                        </View>
+                       
                        </View> )}} />
                     </View>
                     </ScrollView>
+                    </View>
+                    
+                    <View style={style.flex}>
                         <View style={[style.show,{bottom:show}]}>
                             <Text style={{fontSize:18,color:"grey",textAlign:"center",padding:10}}> Search Service</Text>
 
