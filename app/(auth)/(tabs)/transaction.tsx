@@ -63,11 +63,13 @@ const transaction = () => {
                                  numColumns={1}
                                  renderItem={({item,index})=>{return(
                         <View style={style.flex}>
+                        <View style={{alignSelf:"center",display:"flex",flexDirection:"row",width:280}}>
                         <Text key={index}>{item.status}</Text>
                         <Text key={index}>{item.amount}</Text>
                         <Text key={index}>{item.size}</Text>
                         <Text key={index}>{item.plan}</Text>
                         <Text key={index}>{item.date}</Text>
+                        </View>
                        </View> )}} />
                     </View>
                     </ScrollView>
