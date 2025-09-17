@@ -51,7 +51,7 @@ const transaction = () => {
                     
                     <View style={style.flex}>
                       <ScrollView>
-                     <View style={{padding:10}}>
+                     <View style={{padding:10,alignSelf:"center"}}>
                        <FlatList data={users?.transaction}
                                  numColumns={1}
                                  renderItem={({item,index})=>{return(
