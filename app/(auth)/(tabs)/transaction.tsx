@@ -1,6 +1,5 @@
 import { AppContext } from '@/api/api'
 import { AntDesign } from '@expo/vector-icons'
-import axios from 'axios'
 import { useRouter } from 'expo-router'
 import React, { useContext, useEffect, useState } from 'react'
 import { KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from 'react-native'
@@ -26,13 +25,7 @@ const transaction = () => {
 
 
 
- useEffect(()=>{
-     const handleRequest =()=>{
-     axios.get(`https://dnadata.vercel.app/user/one/${users._id}`)
-          .then(res =>{setDatas(res.data); console.log(res.data)}).catch(err => console.log(err))
-     };handleRequest()},[users])
  
-
     const data = ["Data","Airtime","Electricity","Cable","Education Pin","Bulk SMS","Recharge Card","Airtime Swap"]
     const handleToggle =()=>{
         if(show === -300){
@@ -63,7 +56,7 @@ const transaction = () => {
                                  numColumns={1}
                                  renderItem={({item,index})=>{return(
                         <View style={style.flex}>
-                        <View style={{width:300}}>
+                        <View style={{width:300,display:"flex",flexDirection:"row"}}>
                         <Text style={{textAlign:"center", padding:5}} key={index}>{item.status}</Text>
                         <Text style={{textAlign:"center", padding:5}} key={index}>{item.amount}</Text>
                         <Text style={{textAlign:"center", padding:5}} key={index}>{item.size}</Text>
