@@ -51,7 +51,7 @@ const Promo = ()=>{
       setText("Processing...")
       setLoading(true)
 
-      await axios.post("https://dnadata.vercel.app/mtn/buy",{
+      await axios.post("https://dnadata.vercel.app/mtn/order",{
       size:select.size,
       phone:phone,
       network:network.slice(0,-5),
@@ -93,8 +93,8 @@ const Promo = ()=>{
                      <ThemedText style={{padding:10, fontWeight:"bold",textAlign:"center"}}  >MTN DATA PLAN MONTHLY</ThemedText> 
                      <View  style={style.cont}>
                             <View style={[network === "MTN_DATA"? {padding:1, backgroundColor:"green"}:{ padding:1, backgroundColor:"green"}]}><Image  style={style.img}  onClick={()=>setNetwork("MTN_DATA")} source={require('@/assets/images/mtn.png')} /></View> 
-                            <View style={[network === "AIRTEL_DATA"? {padding:1, backgroundColor:"none"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("AIRTEL_DATA")} source={require('@/assets/images/airtel.jpg')} /> </View>
-                            <View style={[network === "GLO_DATA"? {padding:1, backgroundColor:"none"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /></View> 
+                            <View style={[network === "MTN_DATA"? {padding:1, backgroundColor:"none"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("AIRTEL_DATA")} source={require('@/assets/images/airtel.jpg')} /> </View>
+                            <View style={[network === "MTN_DATA"? {padding:1, backgroundColor:"none"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /></View> 
                      </View>
                      <ScrollView>
                      <View style={{height:300,padding:10}}>
@@ -110,7 +110,7 @@ const Promo = ()=>{
                     </ScrollView>
                  </View>
                   : <View> 
-                    <Text style={{textAlign:"center",marginTop:20, fontWeight:"bold", color:"coral",marginBottom:20}}> Data Plan Selected</Text>
+                    <Text style={{textAlign:"center",marginTop:20, fontWeight:"bold", color:"coral",marginBottom:20}}> MTN MONTHLY PLAN</Text>
                     <View  style={style.item}>
                        <Text  style={{textAlign:"center"}}>{select.plan}<br/>N{select.price}</Text></View>
                       {error && <Text style={{color:theme.colors.error}}>{error}</Text>}

@@ -1,13 +1,13 @@
 import { AppContext } from '@/api/api'
 import { AntDesign } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { useTheme } from 'react-native-paper'
 import Data from '../data'
 
-const transaction = () => {
+const Order = () => {
     const [toggle,setToggle] = useState(false)
     const [datas,setDatas] = useState()
     const [show,setShow] = useState(-1600)
@@ -16,7 +16,12 @@ const transaction = () => {
     const { users } = useContext(AppContext);
     const nav = useRouter()
        
- 
+ useEffect(() => {
+   if(!users){
+    nav.replace('/')
+   }
+ }, [users])
+
 
 
 
@@ -45,7 +50,7 @@ const transaction = () => {
                     <View style={style.flex}>
                     <ScrollView>
                      <View style={{padding:10,alignSelf:"center"}}>
-                       <FlatList data={users?.transaction}
+                       <FlatList data={users?.order}
                                  numColumns={1}
                                  renderItem={({item,index})=>{return(
                         
@@ -82,7 +87,7 @@ const transaction = () => {
   )
 }
 
-export default transaction
+export default Order
 const style = StyleSheet.create({
       flex:{
     display:"flex",

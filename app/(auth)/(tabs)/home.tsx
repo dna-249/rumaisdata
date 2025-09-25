@@ -35,8 +35,8 @@ function Home() {
       <View style={{backgroundColor:theme.colors.background}}>
         
               <View style={[style.cont2,{ justifyContent:"space-between",flexDirection:"row",padding:20}] }> 
-              <ThemedText type='subtitle'>Welcome Back!<HelloWave/><br/><Text>{users?.user}</Text></ThemedText>
-              <Text> <Ionicons name='notifications' size={24}/></Text>
+              <ThemedText type='subtitle' >Welcome Back!<HelloWave /><br/><Text onLongPress={()=>nav.navigate('/order')}>{users?.user}</Text></ThemedText>
+              <Text> <Ionicons name='notifications' on size={24}/></Text>
                 </View>
                         
 
