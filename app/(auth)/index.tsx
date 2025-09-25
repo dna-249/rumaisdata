@@ -3,7 +3,7 @@ import { HelloWave } from '@/components/HelloWave'
 import { ThemedText } from '@/components/ThemedText'
 import axios from 'axios'
 import { Link, useRouter } from 'expo-router'
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import { Button, Text, TextInput, useTheme } from "react-native-paper"
 import useIndicator from './useIndicator'

@@ -1,6 +1,5 @@
 import { AppContext } from '@/api/api'
 import { AntDesign } from '@expo/vector-icons'
-import axios from 'axios'
 import { useRouter } from 'expo-router'
 import React, { useContext, useEffect, useState } from 'react'
 import { KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from 'react-native'
@@ -26,13 +25,7 @@ const transaction = () => {
 
 
 
- useEffect(()=>{
-     const handleRequest =()=>{
-     axios.get(`https://dnadata.vercel.app/user/one/${users._id}`)
-          .then(res =>{setDatas(res.data); console.log(res.data)}).catch(err => console.log(err))
-     };handleRequest()},[users])
  
-
     const data = ["Data","Airtime","Electricity","Cable","Education Pin","Bulk SMS","Recharge Card","Airtime Swap"]
     const handleToggle =()=>{
         if(show === -300){
@@ -51,26 +44,29 @@ const transaction = () => {
                 <View style={{backgroundColor:theme.colors.background}}>
                     <View  style={style.flex}>
 
-                          <View  style={{justifyContent:"flex-start",width:20}}><AntDesign name='caretdown' size={14}  onPress={handleToggle}/></View>
+                          <View  style={{justifyContent:"flex-start",width:20}}><AntDesign name='caretdown' size={24}  onPress={handleToggle}/></View>
                           <View style={{width:300}}><Text style={{fontSize:20,fontWeight:"bold",textAlign:"center"}}>{select}</Text></View>
                     </View>
-                   
-                    
                     <View style={style.flex}>
-                      <ScrollView>
-                     <View style={{padding:10}}>
+                    <ScrollView>
+                     <View style={{padding:10,alignSelf:"center"}}>
                        <FlatList data={users?.transaction}
                                  numColumns={1}
                                  renderItem={({item,index})=>{return(
-                        <View style={style.flex}>
-                        <Text key={index}>{item.status}</Text>
-                        <Text key={index}>{item.amount}</Text>
-                        <Text key={index}>{item.size}</Text>
-                        <Text key={index}>{item.plan}</Text>
-                        <Text key={index}>{item.date}</Text>
+                        
+                        <View style={{width:300,display:"flex",flexDirection:"row"}}>
+                        <Text style={{textAlign:"center", padding:5}} key={index}>{item.status}</Text>
+                        <Text style={{textAlign:"center", padding:5}} key={index}>{item.amount}</Text>
+                        <Text style={{textAlign:"center", padding:5}} key={index}>{item.size}</Text>
+                        <Text style={{textAlign:"center", padding:5}} key={index}>{item.plan}</Text>
+                        <Text style={{textAlign:"center", padding:5}} key={index}>{item.date}</Text>
+                       
                        </View> )}} />
                     </View>
                     </ScrollView>
+                    </View>
+                    
+                    <View style={style.flex}>
                         <View style={[style.show,{bottom:show}]}>
                             <Text style={{fontSize:18,color:"grey",textAlign:"center",padding:10}}> Search Service</Text>
 
