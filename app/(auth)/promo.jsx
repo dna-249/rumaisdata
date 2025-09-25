@@ -69,7 +69,13 @@ const Promo = ()=>{
       setToggle(false)
     }
     
-
+    const datas  =  [{plan:"1GB MONTHLY PLAN",price:"450"},
+                    {plan:"2GB MONTHLY PLAN",price:"900"},
+                    {plan:"3GB MONTHLY PLAN",price:"1300"},
+                    {plan:"4GB MONTHLY PLAN",price:"1700"},
+                    {plan:"5GB MONTHLY PLAN",price:"2200"},
+                    {plan:"10GB MONTHLY PLAN",price:"4200"},
+                    ]
     
  
     return(
@@ -84,15 +90,15 @@ const Promo = ()=>{
                     <TextInput style={{width:300,marginTop:20}} onChange={(e)=>setPhone(e.target.value)}  placeholder="Phone Number" mode="outlined" label={"Phone Number"}/>
 
                     {toggle? <View>
-                     <ThemedText style={{padding:10, fontWeight:"bold",textAlign:"center"}}  >Select Network</ThemedText> 
+                     <ThemedText style={{padding:10, fontWeight:"bold",textAlign:"center"}}  >MTN DATA PLAN MONTHLY</ThemedText> 
                      <View  style={style.cont}>
-                            <View style={[network === "MTN_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}><Image  style={style.img}  onClick={()=>setNetwork("MTN_DATA")} source={require('@/assets/images/mtn.png')} /></View> 
-                            <View style={[network === "AIRTEL_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("AIRTEL_DATA")} source={require('@/assets/images/airtel.jpg')} /> </View>
-                            <View style={[network === "GLO_DATA"? {padding:1, backgroundColor:"green"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /></View> 
+                            <View style={[network === "MTN_DATA"? {padding:1, backgroundColor:"green"}:{ padding:1, backgroundColor:"green"}]}><Image  style={style.img}  onClick={()=>setNetwork("MTN_DATA")} source={require('@/assets/images/mtn.png')} /></View> 
+                            <View style={[network === "AIRTEL_DATA"? {padding:1, backgroundColor:"none"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("AIRTEL_DATA")} source={require('@/assets/images/airtel.jpg')} /> </View>
+                            <View style={[network === "GLO_DATA"? {padding:1, backgroundColor:"none"}:{ backgroundColor:"none"}]}> <Image style={style.img} onClick={()=>setNetwork("GLO_DATA")} source={require('@/assets/images/glo.jpg')} /></View> 
                      </View>
                      <ScrollView>
                      <View style={{height:300,padding:10}}>
-                       <FlatList data={data?.[`${network}`]}
+                       <FlatList data={datas}
                                  numColumns={1}
                                  renderItem={({item,index})=>{return(
                         <View style={style.item}>
