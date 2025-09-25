@@ -23,6 +23,7 @@ export default function RootLayout() {
         <Stack.Screen name="indicator" options={{ headerShown: false }} />
         <Stack.Screen name="fund" options={{ headerShown: false }} />
         <Stack.Screen name="promo" options={{ headerShown: false }} />
+        <Stack.Screen name="order" options={{ headerShown: false }} />
       </Stack>
       </AppProvider>
  <StatusBar style="auto" />

@@ -3,7 +3,7 @@ import { HelloWave } from '@/components/HelloWave'
 import { ThemedText } from '@/components/ThemedText'
 import { AntDesign, Feather, Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FlatList, ScrollView, StyleSheet, View } from 'react-native'
 import { Text, useTheme } from 'react-native-paper'
 
@@ -15,7 +15,11 @@ function Home() {
  const handleToggle =()=>{
     setToggle(pre => !pre)
  }
- 
+ useEffect(() => {
+    if(!users){
+     nav.replace('/')
+    }
+  }, [users])
  
     const data = [{item:"Data", func:()=>nav.navigate('/data')},{item:"Airtime"},{item:"Cable"},{item:"Electricity"},{item:
                   "Data Card"},{item:"Bonus to Wallet"},{item:"Airtime to Cash"},{item:"Recharge Pin"},{item:
