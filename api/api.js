@@ -9,7 +9,7 @@ export const AppProvider = ({ children }) => {
   }
   
   const Id = get()*/
-  const [users, setUsers] = useState();
+  const [users, setUsers] = useState(null);
   /*useEffect(async()=> {
          await axios.get(`https://dnadata.vercel.app/user/one/${Id}`,{
         }).then(res =>{ setUsers(()=>res.data)}).catch(err=>console.log(err))
