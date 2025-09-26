@@ -76,14 +76,16 @@ export default function Login() {
       user:user.trim().toLowerCase(),
       password:password.trim().toLowerCase(),
       header:token
-    }).then(res =>{ setUsers(()=>res.data);setText("Verification successfully");setVisible(true) ;nav.push({pathname: '/home',params:{id: res.data._id } });setLoading(false); console.log(res.data); })
+    }).then(res =>{ setUsers(()=>res.data);set(res.data.name);setText("Verification successfully");setVisible(true) ;nav.push({pathname: '/home',params:{id: res.data._id } });setLoading(false); console.log(res.data); })
     .catch(err => {setText("Access Denied"); console.log(err)})
     setLoading(false)
     setText("Please Wait...")
- 
+    
   }
   
-  
+  const set =(id:any)=>{
+    localStorage.setItem("id",JSON.stringify(id))
+  }
   return (
     <>
     <KeyboardAvoidingView>
