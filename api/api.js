@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 export const AppContext = createContext();
 
@@ -7,8 +7,14 @@ export const AppProvider = ({ children }) => {
   const id = JSON.parse(localStorage.getItem("id"))
   if(id)return id;else return null
   }
-  const [users, setUsers] = useState(get());
-
+  
+  const Id = get()
+  const [users, setUsers] = useState();
+  useEffect(async()=> {
+         await axios.get(`https://dnadata.vercel.app/user/${Id}`,{
+        }).then(res =>{ setUsers(()=>res.data)}).catch(err=>console.log(err))
+         }, [Id])
+  
   return (
     <AppContext.Provider value={{ users, setUsers }}>
       {children}
