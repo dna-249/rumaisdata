@@ -1,19 +1,19 @@
-import axios from 'axios';
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useState } from 'react';
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const get =()=>{
+ /* const get =()=>{
   const id = JSON.parse(localStorage.getItem("id"))
+  console.log(id)
   if(id)return id;else return null
   }
   
-  const Id = get()
+  const Id = get()*/
   const [users, setUsers] = useState();
-  useEffect(async()=> {
+  /*useEffect(async()=> {
          await axios.get(`https://dnadata.vercel.app/user/one/${Id}`,{
         }).then(res =>{ setUsers(()=>res.data)}).catch(err=>console.log(err))
-         }, [Id])
+         }, [Id])*/
   
   return (
     <AppContext.Provider value={{ users, setUsers }}>
