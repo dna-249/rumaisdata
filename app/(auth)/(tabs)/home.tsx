@@ -7,23 +7,14 @@ import React, { useContext, useState } from 'react'
 import { FlatList, ScrollView, StyleSheet, View } from 'react-native'
 import { Text, useTheme } from 'react-native-paper'
 
-
-
 function Home() {
   const [toggle,setToggle]=useState(false)
   const theme = useTheme()
-  const {userInfo,userInfo2} = useContext(AppContext)
+  const {users} = useContext(AppContext)
   const nav = useRouter()
  const handleToggle =()=>{
     setToggle(pre => !pre)
  }
-    const [users,setUsers]= useState("")
-    const session = ()=>{
-      if( userInfo2) {
-        setUsers(userInfo2)
-      }else { setUsers(userInfo)}
-    };session()
-
  
     const data = [{item:"Data", func:()=>nav.navigate('/data')},{item:"Airtime"},{item:"Cable"},{item:"Electricity"},{item:
                   "Data Card"},{item:"Bonus to Wallet"},{item:"Airtime to Cash"},{item:"Recharge Pin"},{item:

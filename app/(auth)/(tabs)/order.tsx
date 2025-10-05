@@ -1,7 +1,7 @@
 import { AppContext } from '@/api/api'
 import { AntDesign } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { useTheme } from 'react-native-paper'
@@ -16,11 +16,7 @@ const Order = () => {
     const { users } = useContext(AppContext);
     const nav = useRouter()
        
- useEffect(() => {
-   if(!users){
-    nav.replace('/')
-   }
- }, [users])
+ 
 
 
 

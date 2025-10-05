@@ -17,11 +17,7 @@ const transaction = () => {
     const { users } = useContext(AppContext);
     const nav = useRouter()
        
- useEffect(() => {
-   if(!users){
-    nav.replace('/')
-   }
- }, [users])
+
 
 
 
