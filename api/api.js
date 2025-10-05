@@ -19,7 +19,7 @@ export const AppProvider = ({ children }) => {
     
   
   return (
-    <AppContext.Provider value={{ setUsers,Id }}>
+    <AppContext.Provider value={{users, setUsers,Id }}>
       {children}
     </AppContext.Provider>
   );
