@@ -19,7 +19,7 @@ export default function Login() {
 
   const theme = useTheme()
   const nav = useRouter()
-   const { setInfo2 } = useContext(AppContext);
+   const { users, setUsers } = useContext(AppContext);
    const {indicator,indicator2,setLoading,setText,setVisible} = useIndicator()
 
   const handleAunthentication =async()=>{
@@ -76,7 +76,7 @@ export default function Login() {
       user:user.trim().toLowerCase(),
       password:password.trim().toLowerCase(),
       header:token
-    }).then(res =>{setInfo2(()=>res.data);set(res.data._id);setText("Verification successfully");setVisible(true) ;nav.push({pathname: '/home',params:{id: res.data._id } });setLoading(false); console.log(res.data); })
+    }).then(res =>{ setUsers(()=>res.data);set(res.data._id);setText("Verification successfully");setVisible(true) ;nav.push({pathname: '/home',params:{id: res.data._id } });setLoading(false); console.log(res.data); })
     .catch(err => {setText("Access Denied"); console.log(err)})
     setLoading(false)
     setText("Please Wait...")
