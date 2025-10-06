@@ -6,7 +6,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { useTheme } from 'react-native-paper'
-import Data from '../data'
+
 
 const transaction = () => {
     const [toggle,setToggle] = useState(false)
@@ -52,22 +52,24 @@ const transaction = () => {
                           <View style={{width:300}}><Text style={{fontSize:20,fontWeight:"bold",textAlign:"center"}}>{select}</Text></View>
                     </View>
                    
-                    <ScrollView>
-                    <View style={style.flex}>
-                   
-                     <View style={{padding:10,justifyContent:"center"}}>
-                       <FlatList data={users?.transaction}
-                                 numColumns={1}
-                                 renderItem={({item,index})=>{return(
-                        <View style={style.flex}>
-                        <Text key={index}>{item.status}</Text>
-                        <Text key={index}>{item.amount}</Text>
-                        <Text key={index}>{item.size}</Text>
-                        <Text key={index}>{item.plan}</Text>
-                        <Text key={index}>{item.date}</Text>
-                       </View> )}} />
-                    </View>
                   
+                    <View style={style.flex}>
+                        <ScrollView>
+                              <View style={{padding:10,justifyContent:"center"}}>
+                                <FlatList data={users?.transaction.reverse()}
+                                          numColumns={1}
+                                          renderItem={({item,index})=>{return(
+                                  <View style={style.flex}>
+                                  <Text key={index}>{item.status}</Text>
+                                  <Text key={index}>{item.amount}</Text>
+                                  <Text key={index}>{item.size}</Text>
+                                  <Text key={index}>{item.plan}</Text>
+                                  <Text key={index}>{item.date}</Text>
+                                </View> )}} />
+                              </View>
+                      </ScrollView>
+                   </View>
+                   <View style={style.flex}>
                         <View style={[style.show,{bottom:show}]}>
                             <Text style={{fontSize:18,color:"grey",textAlign:"center",padding:10}}> Search Service</Text>
 
@@ -78,11 +80,10 @@ const transaction = () => {
                                   <View style={{height:300,paddingBottom:20,justifyContent:"center"}}>
                                     <FlatList  data={data} renderItem={({item,index})=>{return(<Text style={{fontSize:16,padding:10}} key={index} onPress={()=>handleSelect(item)}>{item}</Text>)}}/>
                                 </View>
-                                <Data />
                               </ScrollView>
                         </View>
                     </View>
-                  </ScrollView>
+                 
                </View>
     </KeyboardAvoidingView>
     
