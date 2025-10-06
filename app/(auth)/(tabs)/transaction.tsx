@@ -55,11 +55,11 @@ const transaction = () => {
                   
                     <View style={style.flex}>
                         <ScrollView>
-                              <View style={{padding:10,justifyContent:"center",minWidth:300, width:1000}}>
+                              <View style={{padding:10,justifyContent:"center",width:300}}>
                                 <FlatList data={users?.transaction.reverse()}
                                           numColumns={1}
                                           renderItem={({item,index})=>{return(
-                                  <View style={style.flex}>
+                                  <View style={[style.flex,{padding:10,justifyContent:"center",width:300}]}>
                                   <Text key={index}>{item.status}</Text>
                                   <Text key={index}>{item.amount}</Text>
                                   <Text key={index}>{item.size}</Text>
