@@ -48,14 +48,14 @@ const transaction = () => {
                 <View style={{backgroundColor:theme.colors.background}}>
                     <View  style={style.flex}>
 
-                          <View  style={{justifyContent:"flex-start",width:20}}><AntDesign name='caretdown' size={14}  onPress={handleToggle}/></View>
-                          <View style={{width:300}}><Text style={{fontSize:20,fontWeight:"bold",textAlign:"center"}}>{select}</Text></View>
+                          <View  style={{justifyContent:"flex-start",width:20,paddingTop:20}}><AntDesign name='caretdown' size={14}  onPress={handleToggle}/></View>
+                          <View style={{width:300,paddingTop:20,}}><Text style={{fontSize:20,fontWeight:"bold",textAlign:"center"}}>{select}</Text></View>
                     </View>
                    
                   
                     <View style={style.flex}>
                         <ScrollView>
-                              <View style={{padding:10,justifyContent:"center"}}>
+                              <View style={{padding:10,justifyContent:"center",minWidth:300, width:1000}}>
                                 <FlatList data={users?.transaction.reverse()}
                                           numColumns={1}
                                           renderItem={({item,index})=>{return(
