@@ -55,22 +55,22 @@ const transaction = () => {
                   
                     <View style={style.flex}>
                         <ScrollView>
-                              <View style={{padding:10,justifyContent:"center",width:300}}>
+                              <View style={{padding:10,justifyContent:"center",width:320}}>
                                 <FlatList data={users?.transaction.reverse()}
                                           numColumns={1}
                                           renderItem={({item,index})=>{return(
-                                  <View style={[style.flex,{padding:10,justifyContent:"center",width:300}]}>
-                                  <Text key={index}>{item.status}</Text>
-                                  <Text key={index}>{item.amount}</Text>
-                                  <Text key={index}>{item.size}</Text>
-                                  <Text key={index}>{item.plan}</Text>
-                                  <Text key={index}>{item.date}</Text>
+                                  <View style={[style.flex,{justifyContent:"center"}]}>
+                                  <Text style={style.p} key={index}>{item.status}</Text>
+                                  <Text style={style.p} key={index}>{item.amount}</Text>
+                                  <Text style={style.p} key={index}>{item.size}</Text>
+                                  <Text style={style.p} key={index}>{item.plan}</Text>
+                                  <Text style={style.p} key={index}>{item.date}</Text>
                                 </View> )}} />
                               </View>
                       </ScrollView>
                    </View>
                    <View style={style.flex}>
-                        <View style={[style.show,{bottom:show}]}>
+                        <View style={[style.show,{bottom:show,zIndex:10}]}>
                             <Text style={{fontSize:18,color:"grey",textAlign:"center",padding:10}}> Search Service</Text>
 
 
@@ -100,6 +100,12 @@ const style = StyleSheet.create({
   },
   div:{
     width:150
+  },
+  p:{
+    fontWeight:"medium",
+    padding:5,
+    fontSize:14,
+    textTransform:"capitalize"
   },
    show:{
     width:320,
