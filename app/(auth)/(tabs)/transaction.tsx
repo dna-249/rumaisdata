@@ -30,6 +30,7 @@ const transaction = () => {
  
 
     const data = ["Data","Airtime","Electricity","Cable","Education Pin","Bulk SMS","Recharge Card","Airtime Swap"]
+    const data2 = ["Date","status","Amount","plan"]
     const handleToggle =()=>{
         if(show === -300){
         setShow( -1600)
@@ -56,6 +57,12 @@ const transaction = () => {
                     <View style={style.flex}>
                         <ScrollView>
                              <View style={{padding:10,margin:"auto",minWidth:320,width:"100%"}}>
+                               <FlatList data={data2}
+                                          numColumns={4}
+                                          renderItem={({item,index})=>{return(
+                                  <View >
+                                  <Text style={[style.p,{fontSize:18}]} key={index}>{item}</Text>
+                                   </View> )}} />
                                 <FlatList data={users?.transaction.reverse()}
                                           numColumns={1}
                                           renderItem={({item,index})=>{return(
