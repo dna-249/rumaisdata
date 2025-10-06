@@ -44,7 +44,7 @@ const transaction = () => {
     return (
   
         <KeyboardAvoidingView>
-          
+
                 <View style={{backgroundColor:theme.colors.background}}>
                     <View  style={style.flex}>
 
@@ -52,7 +52,7 @@ const transaction = () => {
                           <View style={{width:300}}><Text style={{fontSize:20,fontWeight:"bold",textAlign:"center"}}>{select}</Text></View>
                     </View>
                    
-                    
+                    <ScrollView>
                     <View style={style.flex}>
                    
                      <View style={{padding:10,justifyContent:"center"}}>
@@ -82,6 +82,7 @@ const transaction = () => {
                               </ScrollView>
                         </View>
                     </View>
+                  </ScrollView>
                </View>
     </KeyboardAvoidingView>
     
