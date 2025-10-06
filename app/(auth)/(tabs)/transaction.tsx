@@ -61,7 +61,7 @@ const transaction = () => {
                                           numColumns={4}
                                           renderItem={({item,index})=>{return(
                                   <View >
-                                  <Text style={[style.p,{fontSize:18}]} key={index}>{item}</Text>
+                                  <Text style={[style.p,{fontSize:14,fontWeight:"bold"}]} key={index}>{item}</Text>
                                    </View> )}} />
                                 <FlatList data={users?.transaction.reverse()}
                                           numColumns={1}
@@ -113,7 +113,7 @@ const style = StyleSheet.create({
   p:{
     fontWeight:"medium",
     padding:5,
-    fontSize:14,
+    fontSize:10,
     textTransform:"capitalize"
   },
    show:{
