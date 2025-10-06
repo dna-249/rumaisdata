@@ -28,9 +28,9 @@ export default function profile() {
                   <View style={{ width:"320px"}} >
                         <ThemedText type="title">Profile</ThemedText>
                         <View  style={{alignSelf:"center",marginBottom:"20px",display:"flex",justifyContent:"center"}}> 
-                              <AntDesign name='user' size={100}/>
+                              <AntDesign  style={{alignSelf:"center"}} name='user' size={100}/>
                              <ThemedText type="subtitle" style={{textAlign:"center"}}>{users?.name}</ThemedText>
-                              <Text style={{color:"grey" ,textAlign:"center"}}>{users?.user}</Text>
+                              <Text style={{color:"grey",textTransform:"capitalize"}}>{users?.user}</Text>
                         </View>
                         <Text  style={{fontSize:"20px",color:"grey",fontWeight:"bold"}}>General Settings</Text>
                   </View>
