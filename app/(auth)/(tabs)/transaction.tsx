@@ -60,7 +60,7 @@ const transaction = () => {
                                <FlatList data={data2}
                                           numColumns={4}
                                           renderItem={({item,index})=>{return(
-                                  <View >
+                                  <View  style={[style.flex,{margin:"auto",minWidth:320,width:"100%"}]}>
                                   <Text style={[style.p,{fontSize:14,fontWeight:"bold"}]} key={index}>{item}</Text>
                                    </View> )}} />
                                 <FlatList data={users?.transaction.reverse()}
