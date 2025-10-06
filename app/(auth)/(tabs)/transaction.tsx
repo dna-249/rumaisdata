@@ -24,7 +24,7 @@ const transaction = () => {
 
  useEffect(()=>{
      const handleRequest =()=>{
-     axios.get(`https://dnadata.vercel.app/user/one/${users._id}`)
+     axios.get(`https://dnadata.vercel.app/user/one/${users?._id}`)
           .then(res =>{setDatas(res.data); console.log(res.data)}).catch(err => console.log(err))
      };handleRequest()},[users])
  
@@ -44,6 +44,7 @@ const transaction = () => {
     return (
   
         <KeyboardAvoidingView>
+          
                 <View style={{backgroundColor:theme.colors.background}}>
                     <View  style={style.flex}>
 
@@ -53,8 +54,8 @@ const transaction = () => {
                    
                     
                     <View style={style.flex}>
-                      <ScrollView>
-                     <View style={{padding:10}}>
+                   
+                     <View style={{padding:10,justifyContent:"center"}}>
                        <FlatList data={users?.transaction}
                                  numColumns={1}
                                  renderItem={({item,index})=>{return(
@@ -66,7 +67,7 @@ const transaction = () => {
                         <Text key={index}>{item.date}</Text>
                        </View> )}} />
                     </View>
-                    </ScrollView>
+                  
                         <View style={[style.show,{bottom:show}]}>
                             <Text style={{fontSize:18,color:"grey",textAlign:"center",padding:10}}> Search Service</Text>
 
@@ -74,7 +75,7 @@ const transaction = () => {
 
 
                                 <ScrollView>
-                                  <View style={{height:300,paddingBottom:20}}>
+                                  <View style={{height:300,paddingBottom:20,justifyContent:"center"}}>
                                     <FlatList  data={data} renderItem={({item,index})=>{return(<Text style={{fontSize:16,padding:10}} key={index} onPress={()=>handleSelect(item)}>{item}</Text>)}}/>
                                 </View>
                                 <Data />
