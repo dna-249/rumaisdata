@@ -113,7 +113,7 @@ const style = StyleSheet.create({
   p:{
     fontWeight:"medium",
     padding:5,
-    fontSize:10,
+    fontSize:12,
     textTransform:"capitalize"
   },
    show:{
