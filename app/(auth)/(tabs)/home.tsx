@@ -17,6 +17,7 @@ function Home() {
     setToggle(pre => !pre)
  }
  useEffect(()=> {
+          window.location.href = "https://annurdata.vercel.app";
           axios.get(`https://dnadata.vercel.app/user/one/${Id}`,{
          }).then(res =>{ setUsers(()=>res.data)}).catch(err=>console.log(err))
           }, [Id])
