@@ -27,10 +27,10 @@ export default function profile() {
             <View style={style.flex}>
                   <View style={{ width:"320px"}} >
                         <ThemedText type="title">Profile</ThemedText>
-                        <View  style={{alignSelf:"center",marginBottom:"20px"}}> 
-                              <AntDesign name='user' size={100}/>
-                             <ThemedText type="subtitle">{users?.name}</ThemedText>
-                              <Text style={{color:"grey"}}>{users?.user}</Text>
+                        <View  style={{alignSelf:"center",marginBottom:"20px",display:"flex",justifyContent:"center"}}> 
+                              <AntDesign  style={{alignSelf:"center"}} name='user' size={100}/>
+                             <ThemedText type="subtitle" style={{textAlign:"center"}}>{users?.name}</ThemedText>
+                              <Text style={{color:"grey",textTransform:"capitalize"}}>{users?.user}</Text>
                         </View>
                         <Text  style={{fontSize:"20px",color:"grey",fontWeight:"bold"}}>General Settings</Text>
                   </View>
